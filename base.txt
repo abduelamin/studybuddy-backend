@@ -1,0 +1,3983 @@
+How to add JS to your document:
+- Create an external ‘script.js’ file and then you link it to your HTML by writing
+<script src=”style.js” defer> </script> Inside the html <head> tag.
+Usually The script element is placed just above the closing</body> tag. This allows the HTML document to be fully rendered before any JS is applied. However, there's performance issues that could arise if we have many JS script tags at the bottom of HTML doc and this blocks the loading of js scripts. So we have ways of solving this via JS loading strategies. 
+JavaScript Loading Strategies (async and defer):
+
+
+Figure 1: if the ‘js-script’ tags are placed in the <head> of the html doc, then this is how the computer renders the files. It downloads the HTML, stops and downloads js and executes JS then resumes rendering the html doc. This can create a problem if you have 100’s of js scripts.
+ 
+Figure 2: With async, the html and js files are rendered together but then the html is blocked whilst JS is being executed. The thing to note here is that if you have several js-script tags and they are all ‘async’ then the shortest files will load and execute first
+
+Figure 3: with defer, the JS file and HTML is rendered together but JS is executed once the HTML file has been rendered completely. Also with defer, the JS scripts will be downloaded and executed in the order they’ve been written (unlike async which does the smallest ones first)
+Note: You must determine ‘async’ or ‘defer’ inside the <script> tag as shown on the images.
+IN SUMMARY:
+- Use async when the scripts are independent of each other whereby they don't need each other to work. And use defer when you want scripts to be loaded in a specific order. 
+JavaScript Syntax and Comments:
+
+JS is basically a list of statements that are executed line by line
+Each JS should be written on a new line and must end with a ; (just like CSS)
+To add single line comments you use    // type your comment
+To add multi line comments you use /* */ (similar to CSS).
+To add in-depth comments, use /** */ - this is called JS Doc and allows you to provide info on the different parameters in your code and give them more detail.
+
+How to Output JavaScript:
+
+What makes JS difficult is that its output is not as visual like CSS/HTML. So there are ways to make it visual for you.
+
+Alert method: Simply write alert (“ your code or function etc”); - this will then display a pop up of your code.
+
+Prompt method: This will give a pop up message but will give the user the ability to include text into that pop up tab. This is how you write a prompt - prompt(“  “);. If you want to add a placeholder text inside your text box you simply separate your first statement with a comma and then add your placeholder between “” e.g. prompt(“where are you from?” , “country name:”) - note: its all in one bracket.
+
+Console.log() method:This is the best way of showing output, this is because it displays our output and notifies us of warnings/errors and the exact line they occurred in. The syntax is console.log(“”);                                
+
+You can combine console.log with your pop up methods 
+e.g. 1
+console.log(prompt(“”)); 
+e.g. 2 
+console.log(prompt("What country are you from?" , "country name:"));
+
+You can use confirm which is another pop up method and confirm is a boolean attribute so it gives a true or false output. So it's best shown by combining it with console.log. E.g. console.log(confirm("continue learning JS"));
+
+JavaScript Variables (let and const):
+
+Variables are containers to store data/value within. We use these variable names when we want to refer to this data/value.
+There are two key variable words 1) let  2) const 
+
+
+To declare (create) a variable you write ‘let’ followed by the name. E.g. let newobjects;
+To select the variable and begin to add data to it you do: variable name = “  ”               in the quote you just put in the data. 
+Instead of writing the variable on one line and the variable data on the 2nd line, you can use shorthand - let newobjects = “circle”;
+Although you can declare many variables and their data on one line and only using 1 let. E.g let gametitle =”sonic”, gameplatform = “SEGA”, gameyear = 1991 . 
+The code is not clean therefore, its best to put all variables on a new line.
+Let gametitle =”sonic”;
+Let gameplatform = “SEGA”;
+Let gameyear = 1991;
+
+	Notice: Each variable ends with a semi-colon (similar to CSS, without the semicolon it wont execute)
+
+You can change the data within the variable at any given moment by simply selecting the variable name = “ ” and change the data within the quote. NEVER write down the ‘let’ again 
+There are 3 rules when it comes to naming variables:
+Variable names must only have letters, numbers or $ and _ symbol and NO SPACES.
+First character must not be a number  
+The must not have a reserved keyword in JS language (for info on what these words are use https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#keywords) 
+
+Very important note: the = in JS is called an assignment operator, and is used to assign things to something else. The equals is written as ==
+
+
+
+Variables declared with Const (short for constant) CANNOT be changed (whereas variables declared with let can be changed). So we only use const  when we know for sure that the data/value within this variable will not change.
+
+
+Note: Remember the syntax for console.log is console.log(“ ”). However, when trying to console log a variable you don’t put the “” symbol, you just put the variable name without the “” e.g. let favColor = ”Red”. Then you output this by console.log(favColor). 
+If you were to write console.log(“favColor”) the console log will output the word favColor.
+
+JavaScript Data Types:
+
+Data types are the types of data we store in variables e.g. 
+Number (only contains numbers) e.g. let num = 2; - this is a number data type.
+String (which is sequence of letters and must be wrapped in “ ”) e.g. let name =”Mike” - this is a string data type 
+
+NOTE: when writing variables in the previous lesson we only used string data type hence we used the “” but if we didn’t then we wouldn't need “”
+
+
+
+
+Data types are divided into 2 categories, Primitive and non-primitive (see above).
+Primitive data types means simple singular data values  whereas non-primitives can hold multiple and complex values. 
+
+Number data type:
+Any data that involves a number is known as a number data type 
+
+String data type:
+String are just text values and are wrapped in “ ”
+
+Boolean:
+This data type only has 2 values, true or false. Boolean data types are used to compare actions and carry out an action depending if it's true or false.
+
+Bigint:
+This data type handles really big numbers. To declare the data type as a big number and ensure it falls into the Bigint data type is you must end the number data with an ‘n’ e.g. 
+Let num =2n and so when you console.log(typeof num) - Bigint will be displayed.
+
+Undefined: 
+
+Undefined data type is a variable that has not been given a value
+
+Null: 
+
+Null is used to declare a value as empty - this is different to undefined because we don’t specify undefined but we must specify null.
+ 
+
+If you’re unsure what data type you are playing with then just use console.log(typeof ‘and the name of your variable you want to find out the data type of’) and then on the console log will display what it is e.g.  console.log(typeof favColor); 
+on the console ‘string’ will be displayed
+
+
+
+
+
+
+Non-primitive data type.
+
+Object: Is a collection of data. Arrays, functions and objects are considered object data types.
+JavaScript variables are containers and anything that contains data is considered a variable therefore arrays and objects are variables too.
+
+Arrays: is a list of different data within a variable.
+To create an array you make a variable give it a name and = then use square brackets     [] and then you list out your values and separate them by commas. e.g 
+Let MyList = [“Mike”, true, “Youtuber”, 8]; 
+If you console.log this array variable by console.log(MyList); you’ll see all the values you inserted to your list.
+If you want to select a specific value you do the following: console.log (MyList[   ] ); Inside this square bracket you select a number. This is because in an array every item is given a corresponding number and when you console.log the whole variable you’ll see the numbers assigned to each data item. You must know that numbering starts from 0 so in the above example Mike is 0, true is 1 etc… 
+
+
+Functions: is a set of statements that performs a task or calculates a value.
+To declare a function we use the function keyword and then give our function a unique name followed by parentheses (). Then we add curly brackets {} that contain the code for the task we want to perform.
+
+E.g. 
+Function message() {
+	console.log(“hello”)
+}
+
+Then to call this function to action we just type the function name with the parenthesis. Because the parenthesis are responsible for bringing the function into action
+
+E.g. 
+message();    - And so in your console you’ll see the word hello.
+
+Objects: objects have methods and properties and Are used to store name-value pairs
+The name:values pairs in JavaScript objects are called properties:
+Methods are actions that can be performed on objects.
+Methods are basically functions
+
+
+To write an object you do the following:
+
+Let character = {
+	
+}
+
+The curly braces is what creates the object. Within this curly braces you write down name-value pairs. You can make a long list of these pairs and each pair is comma separated.
+
+E.g. 
+Let character = {
+	Name: “Sonic”,
+	Color: “blue”,
+	Speed: 1000.
+	Fast: true,        
+}
+To output this object, you console.log(character) and it will display the whole data list of items.
+If you want to select a specific data item (like with arrays) you do console.log(character.speed);     With objects the selector is . whereas with arrays the selector is [  ].
+
+Arithmetic Operators:
+
+
+Addition, subtraction, division and multiplication standard maths e.g. console.log(5*3); will display 15.
+
+Modulus - finds the remainder e.g. console.log(5%2); will display 1. This is because 5/2 = 2 and the remainder is 1.
+
+Exponentiation - just means to the power of that number e.g. console.log(5**2) will display 25, console.log(5**3) will display 125.
+
+Increment - increases the number by 1 —- Decrement - decreases the number by 1:
+You can only increment or decrement an existing variable. E.g. let score = 99;
+To increment this number you must console.log(score++); this will first display 99 and then afterwards you must console.log(score) which then will display 100. To avoid this from happening simply put the ++ before the variable name (++score). Therefore the display will be 100.
+To decrement its console.log(--score); which will display 98.
+
+Arithmetic operators are carried out in precedence ie theres an order to which arithmetic calculations are carried out and this is BODMAS (brackets, order (e.g. power of the number) division, multiplication, addition and subtraction). So if you have a sum that has many different arithmetic calculations, this is how JS will come to its final answer.
+
+E.g. let sum = 5 + 3 * 2 - 1 * (1 + 1);
+JS will deal with the brackets firsts = 2. Then multiplication (as there is no order or division) 3x2 = 6 and 1x2 = 2. So the final equation will look like 5 + 6 - 2. Which = 9. So when you console.log(sum); 9 will display.
+
+Assignment Operators:
+
+These operators assign values to variables (i.e. connects the value to the variable name). And there are different types of assignment operators.
+
+=  -We’ve used this in the above lessons to assign data values to variables.
+
+Compound assignment operators - they are used when we have a variable and we do arithmetic operations on it and then store the new value to the original variable i.e. updating the variable. We could re-initialise the variable by doing ‘variable-name = …’ but that's too long winded.
+
+Addition assignment operator (+=) - This is used to add to the initial data of the variable e.g. let score = 100 (original variable) but we now we want to make the variable 150. Now we could do, score = 150 but that will get complicated with the more data we’ll be using. Therefore instead we do this:
+let score = 100;
+Score += 50;
+When we console.log(score); it’ll display 150.
+
+Subtraction assignment operator (-=) - Does the opposite of += and just subtracts from the original variable.
+
+Multiply assignment operator (*=) - 
+E.g. let donation = 100;
+Donation *= 2;      - This just means multiple the data by 2.
+console.log(donation) will display 200,
+
+Division assignment operator (/=) -
+E.g. let sweets = 10;
+Sweets /= 5;     - This just means divide the data by 5
+console.log(sweets); will display 2.
+
+
+
+Modulus assignment operator (%=) -
+Let pizzaSlices = 10;
+pizzzaSlices %=3;  - This means 10 / 3  and calculate how many is left over
+console.log(pizzaSlices); will display 1 because 3 fits into 10, 3 times with 1 remaining.
+
+
+Summary:
+These operators come in handy when you want different things to occur at different values. You can combine these with each other to deduce the final value of the variable e.g.
+
+
+let x = 30;
+x += 20;
+x /= 2;
+
+
+console.log(x); This will display 25.
+
+
+
+Numbers:
+
+Numbers data type can be any number (whole or decimal).
+When trying to use large numbers it gets tedious to write the whole number esp as you can make errors and miss out a zero. Therefore we use scientific notation for large numbers.
+ E.g. let mil = 1e6;    - The just ‘e’ stands for 0, so 1 followed by 6 zeros which will make 1,000,000.
+To write smaller numbers you simply put - after the e. 
+E.g. 
+Let smallNum = 1e-4; Will display 0.0001, 
+let z = 123e-5;   will display  0.00123 - if there is more than 1 digit then the ‘ e-’ for refers to how many decimal places will be used. In this example we have e-5, so if we do it like above 0.00000123 - this is incorrect. Instead we use 5 decimal places and included in these 5 decimal places is the number before e-. 
+E.g. 2 If you already have a decimal placed number e.g. 123.5e-5 the decimal places moves 5 spaces. Therefore, when you console log it you’ll see 0.001235
+
+
+
+You must know that JS has built-in (aka global) objects. So therefore primitive data types such as number and string automatically have access to the number and string objects respectively. 
+These built-in objects just have a capital letter - THIS IS VERY IMPORTANT to remember.
+
+
+
+
+Example:
+You have a number variable and you want to access the number object methods to do this, instead of writing let score = 100; you write:
+Let score = new Number(100) - the keyword to activate the number object is new Number (notice the capital n) and then place the number you want in a bracket.
+Therefore, when you console.log(type of score), object will be displayed to show that this variable is now an object variable and has access to number methods.
+Now once a method has been selected and called then the score variable will return to a primitive data type i.e. if you console.log(typeof score) it’ll display number.
+
+^^ You don’t have to specify    ‘Let score = new Number(100)’  because whenever we use object methods, JS does this equation in the background. I just wrote it so that I can better understand it.
+
+
+
+To access object methods is very simple and this is how e.g.
+Let num = 5;
+console.log(num.) The full stop after the variable name will turn the variable num (a number data type) into a Number object method and if you look on VSCode you will see the various number methods available. 
+
+Summary:
+Any number we create has access to number methods. Number data type is primitive, although they are not objects they have access to built-in object counterparts (Number for number). This gives the primitive data access to methods. We should always write the primitive data and not the new Number way I showed above.
+
+Number Methods:
+
+
+We use number methods to format numbers so that numbers are displayed in a certain way (ie rounded up or with commas like 5,250,000). One thing to know, the formatted number we get from the methods, JS returns this value in a string and not a number and so if we want to use the formatted number we have to convert it back to number (by using parseint). 
+
+3 common Number methods are:
+
+.toFixed(): This will truncate the number down to the decimal places you insert between the brackets. E.g:
+let PI = 3.14569265; 
+console.log(PI.toFixed(3)); will display 3.146   Note, how it rounded up as well.
+
+.toPrecision(): The number in the brackets specifies the significant figures it will display
+E.g.  
+let PI = 3.14569265; 
+console.log(PI.toPrecision(3)) will display 3.15 (i.e. 3 sig. figures) again note that it rounds up.
+
+.toExponential(): This returns the scientific notation version of a number.
+E.g. 
+Let mill = 1000000
+console.log(mill.toExponential()) will display 1e6.  NOTE: How we don’t have to input a number in the brackets.
+
+
+Note: JS number methods round up or down automatically.
+
+
+Notice how in this example he used a ‘main’ variable (PI and mill) and created a ‘num’ variable. This is for 2 reasons.
+
+Like I mentioned above, when we use a number method, the data is returned as a string not a number (so if you do typeof you’ll see string). Hence if we just link the method directly to the ‘main’ variable it will affect subsequent code that relies on the ‘main’ variable.
+We use the num variable to carry out the method and allow us to reference it if we want to output in the console log or wherever. For example if we didn’t have the num variable and we just did:  let pi = 3.14159654.toFixed(3) and logged it, it’ll display 3.142 this will affect the subsequent codes because what if we need to create precision and exponential numbers using the main variable. So not only does it make the main a string and WE CAN’T USE Number methods on strings it also changes the original number which makes it inaccurate so even if we revert it back to a number it will be the wrong number.
+
+If all this is confusing then try it out on vscode and it’ll make sense.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Strings: 
+
+Earlier we were taught all strings must be wrapped in “ “ and this is true, however, you may run into errors when you have to use “” in your text. So now the best method for writing strings is to wrap them in `` (backticks)
+
+How to Concatenate Strings:
+
+This just means connect strings. This allows us to make sentences.
+
+The way we add connect different strings is by using the + (arithmetic operator). Make sure to leave comma’s or spaces within the strings that will continue the sentence so that is its readable.
+You can connect strings in 3 ways:
+
+
+
+E.g.
+Let day = `Good morning, `;
+Let night = `Good evening, `;
+Let question = `how are you?`;
+
+Now to combine these string variables together we need to create a new variable that contains the format we want these strings executed.
+
+E.g. 
+Let greeting = day + question;
+And if we condole.log(greeting), it’ll display Good morning, how are you?
+
+
+
+There's another way of connecting strings together without the + and that is to use string method .concat().
+So the above greeting will be written as let greeting = day.Concat(question);
+This will display the same message once you console.log it.
+
+You can create ‘one-time’ strings by just writing them down inside `` and using the + to connect it to another ‘one time’ string or a string variable.
+E.g. 
+console.log(day + `Have you had breakfast?`) - this will display Good morning, have you had breakfast)
+ 
+This tactic is good for when you don’t want to write a variable for every string esp ones you’re only using 1 time or if you want to add commas between text etc.. 
+E.g. console.log(greeting + `. ` + night ) - will display Good morning, how are you?. Good night.
+
+
+
+
+Type coercion - You cant mix and match primitive data.
+So for example, When adding a number and a string, JavaScript will treat the number as a string.
+E.g. let x = 16 + “volvo”; This will display 16volvo because JS will read 16 as a string.
+
+JavaScript evaluates expressions from left to right. Different sequences can produce different results. E.g. let x = 4 + 16 + “Volvo”; will display 20Volvo, this is because JavaScript treats 16 and 4 as numbers, until it reaches "Volvo".
+In the second example
+Let x = “volvo” + 16 + 4; will display volvo164 - this is because  since the first operand is a string, all operands are treated as strings.
+
+
+
+
+
+Practice: You can insert a prompt() into a variable so that when you call the variable name it will display the answer given in the prompt textbox. Try using a prompt to answer the question “What is your name” and then in the console log you can add the answer from the prompt into it. So whatever gets put into the prompt will be displayed on the console.                                                       ANSWER
+
+
+Tip:
+
+With .concat() method you can attach as many strings inside the brackets as you want and you can do so in a variety of ways. As you can see below, the last 3 console log’s all display the same message but were written in different ways.
+
+let x = `I am learning `
+let y = `JavaScript`
+let a = ` and CSS`
+let b = `html`
+
+
+let result = x + y;
+
+
+result = x.concat(y) + ` AND I AM LOVING IT`;
+
+
+console.log(result)
+
+
+result = x.concat(y,a) + ` and `.concat(b);
+
+
+console.log(result)
+
+
+result = x.concat(y,a + ` and `) + (b);
+
+
+
+
+console.log(result)
+
+
+
+
+result = x.concat(y,a + ` and `.concat(b)) ;
+
+
+console.log(result)
+
+
+Template Literals:
+
+Strings can be written easier than displayed above without the need of adding the spaces or `` for the extra words or + sign. Also you can write on multi-lines just by putting the text on a new line. - we can do all of this via template literals.
+
+This is basically just putting a ${ } when mentioning your variable then you can go on to write whatever you want and whenever you want to add another variable you use the ${ }.
+
+e.g. 
+Let title = `sonic`
+Let platform = `SEGA`
+Let year = 1991
+
+This can be concatenated (connected) by doing this;
+Let info = `${title} was released by ${platform} in the year ${year}.`
+
+NOTE: we still need to put the `` for the main string so that JS knows this is a string variable but there isn’t any need for the extra stuff. It’s as if you’re typing on a word document and if you want to go to the next line you just do so as normal.
+
+
+
+
+
+
+
+Template literals also allow us to mix number and strings. :
+E.g
+Let num1 = 10
+Let num2 = 5
+
+Let sum = `the total is ${num1 + num2}` - This will display the total sum is 15.
+
+Because as you know JS will convert numbers into a string and if we didn’t use the template literal the display will be ‘the total is 105’
+
+E.g. 2 -  if you want to write a time whereby 
+let hour = 18
+Let min = 30
+
+Let time = `${hour} : ${min}` - this will display 18:30 on the console log.
+
+
+
+
+String methods:
+
+Just like number, when we create a string it has access to its built-in object counterpart enabling us to use string methods and properties.
+
+String property:  .length
+This string property tells us the number of characters in the variable including the number of spaces. 
+E.g.
+Let intro = `JavaScript is cool`  - when we console.log(intro.length) it will display 18 - meaning theres 18 characters in this string variable. This property is handy when making forms e.g. you want password to be a specific length.
+
+
+Methods: There are many string methods but remember each method ends ( ). 
+
+For all these examples we will be using this variable: Let intro = `JavaScript is cool`
+
+.trim() ; This removes white spaces at the start and end of a string but not the white spaces between the text.
+E.g. console.log(intro.trim()) - in the above variable we don’t have white spaces but if we did, then it would just remove them and return the javascript is cool sentence.
+
+.toUpperCase(): This will turn all the letters into capitals
+console.log(intro.toUpperCase()) will return JAVASCRIPT IS COOL
+toLowerCase(): turns all into lower case
+
+.indexOf(`  `): If you put a letter between the brackets it will tell you at what position this letter FIRST OCCURS is located in the string sequence. And remember JS is 0-index i.e. it starts at zero.  REMEMBER 2 things 1) TO PUT THE LETTER IN ` ` and 2) the index takes into account spaces. 
+E.g. console.log(intro.indexOf(`a`) will display 1. 
+E.g. 2 console.log(intro.indexOf(`l`) will return 17.
+
+.lastIndexOf(` `) - Will display when the last occurrence of your targeted letter occurred.
+
+.slice(  ,  ) - this slices out characters from the variable using their index value so in the bracket you have to specify the starting index and the ending index, separated by a comma. 
+ e.g. if we want to slice out javascript we do console.log(intro.slice(0, 10)) this will display javascript.   In short this method extracted those characters and displayed them.
+
+.replace(` ` , ` `): These 2 back ticks represent where 2 words will go, in the first one is the word within the variable we want to replace and the 2nd one is the word we want to replace it with - remember to separate the 2 words with a comma.
+
+charAt() - If you put in a number here, it will display which letter located at that number position e.g. console.log(intro.charAt(4)) will display S - CharAt is short for character at.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+How to use the JS Date object:
+
+Date object is used to create sites that contain a calendar or require the clients date and time (e.g. train timetable).
+To use the date object we must first create an instance (activate) by using new Date().
+
+‘New’ is a js key word that is used to create an object. For example new Number, creates a number object (look at the numbers lesson above)
+
+There are 4 ways we can create the date object:
+
+new Date() - Gives the current date and time (NOTE: we don’t write anything inside the brackets)
+E.g. let todayDate = new Date()  - if we console.log this it will display the current date and time.
+Now can use the different date methods to format the date ie. display the year, month, minutes etc…
+E.g console.log(todayDate.get()) When you type the full-stop ‘ . ‘ this gives you a list of ‘get’ methods. And as always make sure you add the () after the method to tell JS that this is a method. 
+E.g. console.log(todayDate.getFullYear()) will display the current year
+
+Note: Month and day are zero index, so January is 0 and sunday is 0. So when you use the .get methods remember that these 2 are zero indexed so if you’re in december and it says 11 for the month that's correct.
+
+
+new Date(UNIX TIME) - this time inside the brackets we’d type the UNIX TIME (which is the time in milliseconds from 1st Jan 1970. E.g. new Date (1700947453463) - this will give today's (25/11/23) date and time. So if we do let dateInMilliseconds = new Date (1700947453463). Then the console.log will show todays date.
+
+new Date(` `) - This creates a date using a string, so in the brackets we write down the date as a string 
+E.g. let myDate = new Date (`Aug 10 2019 08:35:00`).  - if we console.log this it will just display the string date we wrote down.
+
+new Date(1999, 11, 25 , 14, 00, 0, 0) - this is a component date whereby we break down the year into its components (year - month - day - hour - minute - seconds - milliseconds). E.g. let myYear = new Date(1997, 4, 16, 06, 00, 0, 0) - console.log will display May 16 1997 06:00:00. 
+
+*Depending on the project your building you should know which date object to use*
+
+Date methods:
+
+There are two types of date methods 1) .get , 2) .set 
+.get enables us to retrieve(i.e. get) the date and time info
+.set enables us to set the date and time
+So type .get or .set will give you the list of methods you can use - just don’t forget to end them with ().
+
+We know how .get methods work because we used them above. For .set methods we type on the info we want to set inside the brackets e.g. todayDate.setFullYear(2010) - This sets the year to 2010 and to prove this, when we console.log(todayDate) it will display the current date and time but the year will be 2010. If you just want to view the year only then you must do console.log(todayDate.getFullYear) which will only display 2010.
+
+
+How to get the date and time info as text rather than number:  - because using numbers will get confusing esp if users don’t know about zero index. 
+
+We will use let currentDate = new Date() as the reference variable.
+
+To convert the date into a string we use .toLocalString()
+Inside the brackets we type (`default` , {name:pair value} )
+E.g. currentDate.toLocalString(`default`, {month: ‘long’} )
+THE `long’ will display the full name but if we put short it will abbreviate it.
+Same thing for the day {weekday: `long`} will display the full days name.
+Don’t forget that since we are using an {} object we can have many name:value pairs in one curly bracket.
+E.g: 
+currentDate.toLocalString(`default`, 
+{month: ‘long’,
+ Weekday: `long`
+}
+
+
+Why do we use methods? - Methods give us the ability to format primitive data in useful way e.g. number methods make numbers easily readable, string methods allow us to edit/connect strings and date object allows us to set or retrieve date and time info.
+
+
+Summary:
+To use a date object we need to create one. There are different ways to create a date object depending if you want a current date info or a custom date. 
+.get .set methods enable us to retrieve or set date/time info
+.toLocalString allows us to convert date/time into string using the objects variable
+
+	To clarify and make things easier to read/understand:
+Methods have a way to set them out. We first identify the variable and its data. We then create a new variable that consists of the primary variable + its method. Then to call that action into the console log we simply type in the new variable name rather than the full thing.
+E.g. 
+Let date = new Date() - Main variable
+We want to deduce the fullyear method so can do: date.getFullYear() 
+But now we cant display it on the console.log unless we type console.log(date.getFullYear).
+However if we give this method its own variable ie. dateYear = date.getFullYear()
+We can then console log it by simply doing console.log(dateYear)
+
+
+Math object:
+
+Math.PI - This is the only math property.
+
+Math.min() - In the brackets you put a list of numbers. Then when you console.log it’ll display the lowest value in that list. The list is written inside the ().
+
+Math.max() - Same as above, it will return the highest value within the list of numbers within the bracket. 
+
+E.g. let test = Math.min(1, 5, 200, 3000). Console.log(test) will display 1.
+
+Math.pow() - pow is short for power, this method gives you to the power of. So you input 2 numbers within the bracket (separated by a comma) and it will give you the answer when you log it. E.g. let test = Math.pow(5, 3)  is just 5^3 which is 125.
+
+Math.random() - Generates a random number from 0 to 1 each. Because this method gives it in many decimal places you can combine the .toFixed() number method to this to enable you to use a list from 1-10. E.g.
+Let test = Math.random().toFixed(2) this will give you a random number between 0 -1 (but not including 1) but will be 2 decimal places.
+Let test = Math.random().toFixed(1) * 10 - this will return a random value between 0 to 10 (but not including 10). The (1) gives 1 decimal place and *10 multiplies it by 10 to make it a whole number..
+
+To get a list from 1 - 10 and not 0 - 10 you do Math.floor(Math.random() * 10 + 1)
+The reason for this is stated in this link.
+(https://stackoverflow.com/questions/43791101/how-does-math-floor-math-random-10-1-work)
+In short, Math.random() gives a number from 0 to 1 (including the 0 but never 1). So we do the * 10 + 1 so that we go out of the decimal and the +1 makes the range from 1 -11 (including 1 but excluding 11) therefore, the list will be from 1,2,3,4,5,6,7,8,9,10
+
+
+Math.floor() - This ONLY ROUNDS DOWN to the nearest whole number. You input a decimal number inside the bracket and it will turn this into a whole number.
+
+Math.round() - This will round up or down to the nearest whole number
+
+
+
+About the Math.min() and Math.Max() in the brackets you can type the values or you can use number variables. E.g. 
+let num1 = Math.random().toFixed(1) * 10;
+let num2 = Math.random().toFixed(1) * 10;
+let num3 = Math.random().toFixed(1) * 10;
+
+
+console.log(
+    num1,
+    num2,
+    num3
+)
+
+
+let test = Math.max(num1, num2, num3);
+
+
+console.log(test)
+
+
+
+
+
+
+
+Comparison Operators:
+These are the 3 types of comparison operators. And these will display a boolean output when console logged.
+
+
+Relational comparison operators: These are just comparing one number to any another using the > , >= , < and <= signs to compare to values/variables. 
+>= means more than or equals to
+<= means less than or equals to.
+E.g. 
+Let x = 7
+
+X > 10  - Will display false as x is less than 10
+X >= 7 - will display true because the question is asking is x more than or equal to 7 and yes its equal to 7.
+
+Abstract/loose operators: Checks to see if the values are the same.
+== to means equals 
+!= means is NOT equal to
+E.g.
+X == 7 - this will display true
+X != 5 - will display true - because x is not 5.
+
+
+Strict: Checks to see if the values are the same and are the same datatype.
+===   means is equal to
+!== means is NOT equal to
+E.g.  let x = 7 and let y = `7`
+So,  x === 7 will display true, because x is 7 and a number but x === y will display false because although they are the same number, y is a string therefore they are different data types.
+
+
+
+Important to know when to use strict (===) or loose (==), this is because if you’re not bothered about the 2 values being the same type then you can use == as this will display true when both values are the same, even if they have different data types.
+
+Whereas === will only work when both value and type are the same.
+
+
+
+Comparing strings:
+
+We can also compare strings (although the majority of JS is comparing numbers its still useful to know string comparisons..
+
+The way this works for strings is that each letter has a number A being the lowest and Z being the highest. Therefore, we can compare different words and letters depending on their first letter. If you have words that start the same then the comparison is based on the first letter that are different e.g. Time and Timing, the first 3 letters are the same therefore a comparison is going to be made at the first instance of different letters so in his example its the 4th letter. E is compared to I. and I had a higher value than E..
+
+We use the same symbols as above (relation <>, abstract/loose == , != and strict ===, !==)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Logical Operators:
+
+JS falsy and truthy statements.
+
+The falsy statements are:
+False
+Undefined
+Null
+NaN
+“ “    - (this means an empty string)
+0
+
+Anything not in this list is considered truthy.
+
+We use logical operators to convert non-boolean values into boolean values 
+
+There are 4 logical operators:
+
+! - NOT:    
+ E.g let x = 1   (This is considered a true statement because its not one of the 6 falsy statements).
+
+x = !x (This is considered as a false, this is because x was original a true statement but now we’ve updated to be not true via the use of ! )
+
+When we console.log(typeof x) it will show up as boolean. Because these logical operators convert the non boolean values into booleans. 
+
+Another example to help you better understand:
+E.g. let y = 0   (since 0 is a falsy statement this makes y false) but of course its not officially a boolean until we use one of the logical operators to convert it into one.
+Now if we do y = !y it will display true on the console log because this equation is saying Y is not false which means its truthy.
+
+Summary: 
+The use of ! logical operator has converted our number value into a boolean and it countered its initial start point. I.e. it countered the initial true statement to make it false and countered the initial false statement to make it true.
+
+Before we move on you must know that logical operators are used to turn non-boolean values into boolean to carry out an action based on if the value is true or false.
+This is best shown by the use of if statement.
+
+If statement syntax
+
+if () {
+
+} 
+
+If statements mean that if whatever is in the brackets is true, then execute the code in the curly braces.
+
+E.g. let x = 1 (true)     let y = 0  (false)
+
+If (x) {
+console.log(`hello`)
+}
+
+This just means if x is true (which it is because its value is not one of the 6 false statements) then display hello on the console.
+
+So if were to do if (!y) {console.log(`hello`) } - Hello will be displayed because the ! countered the initial false tag that y had.
+
+&& - AND - checks to see if the multiple values are true. ALL values must be true for it to execute its code. 
+E.g.
+
+If (x && y) {
+console.log(`hello`)
+}
+
+Since x is true and y is false, hello will not be executed.
+
+If we were to use If (x && !y) i.e. AND and NOT logical operators to turn all the values into true, this will display true on the console.log
+
+|| - OR - This means either value is true then the code will be executed. So unlike the prior one where all the values in the list must be true to return a true console.log. For this one only 1 of the values needs to be true. 
+If both values are false then 
+
+
+Using the || operator We can do short circuit evaluation, this becomes very helpful when working with functions/methods
+In this example x = 1 and y = 0
+X || alert(`this is ignored since x is true`);
+Y || alert(`this is alerted since Y is false`);
+
+What these 2 statements are basically saying is “if X is true” then no alert will pop up but “if Y is not true” then execute the pop up alert.
+Remember the || operator is asking this OR that. So it's asking If not true then let this execute.
+
+
+
+
+
+
+
+
+
+
+
+?? - Nullish Coalescing 
+
+This operator means if the 1st value is not NULL or UNDEFINED then take its value. However, if it is NULL or UNDEFINED then proceed to the next value.
+In short it means Take the first defined value
+
+E.g.
+
+Let game = null;
+Let game2;                    
+Let game3 = `sonic`;
+Let game4 = ``   - This is an empty string and even though its empty it has been initialized and therefore it's not undefined.
+console.log(game2 ?? game3) - sonic will be displayed because the 1st value is undefined and so JS will move onto the next one and execute the 1st defined value.
+
+You can ask why not use ||. This is because || focuses on truthy statements so if 0, NaN, false, `` were present and we’re trying to distinguish if the variable contains a defined data (even if its a falsy) then using || will not display that and will only display the true data hence making it seem as if there isn’t any defined values.
+
+Therefore, ?? is used to identify defined values.
+
+
+
+
+
+
+
+
+
+
+
+
+E.g. 
+The 1st image example uses || and you can see the score was skipped over and the text was logged instead.. But in some cases we want to determine if a score has even been defined in the first place.
+
+The 2nd image example uses the ?? and as you can see the 0 has been logged.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Summary:
+?? displays the 1st defined value - Use case for this is when we want to use a defined value that is also falsy.
+|| displays the first truthy value
+
+
+
+
+JS Control flow:
+
+JS control flow dictates when and how our code is executed using conditional statements and loops.
+
+Conditional statements - Checks to see if a statement is true or false and depending on the answer a certain code will execute.
+
+Loops - Allow us to perform repetitive tasks (i.e. iterate over the list within an array)
+
+
+These are the different types of conditional statements and loops in JS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+If else Statements:
+
+If () { 
+	// Code you want to execute      - Whatever is in the brackets (), if its true then the code will execute.
+	}
+
+else{
+	// Code you want to execute  
+}
+
+This is written after the ‘if’ statement whereby if the statement in the if () is false then the else code will be executed.
+This time, notice how the else doesn’t have brackets because it doesn't need it. This is because else just means whatever in if() if it isn’t true then its the other thing(I didnt want to say false because you won’t always have true false aspects here. You may have numbers etc.. so if it isnt 10 its most likely going to be 1,2,3 etc..  This is common sense you have to look at it with common sense)
+
+E.g  This is how they are written.
+Let game = `Mario`
+
+If (game === `sonic) { 
+console.log(`The condition is true`); 
+} else { console.log(`The condition is false`); 
+}
+
+There’s also else if statements and are used to test multiple conditions. And unlike else, you must write the condition your testing within the brackets 
+
+Else if () {
+	// Code you want to execute  
+}
+—--------------------------------------------------
+E.g.   Let roll = 2;
+
+If (roll === 4) { 
+console.log(`You rolled 4`)
+} else if (roll === 5) { 
+console.log(`You rolled 5`)
+} else if (roll === 6) {
+console.log(`You rolled 6`)
+} else {
+	console.log(`You rolled lower than 4`)
+}
+
+
+Remember these conditions are looking for the 1st true value. So if you have a list of 5 conditions and the bottom 3 are true then only the 1st true condition will have its code executed.The other true conditions won’t have their code executed
+
+
+
+Switch Statement:
+
+Else if statements are good when you have a small list of conditions to test. Otherwise when you have a big list of conditions we use switch statements.
+
+Switch statements use something called cases and each case will be run and compared to the condition via strict comparison (===). Once a case matches the condition then it will execute the code.
+
+Syntax:
+Switch (condition){
+	Case condition being compared to:
+	 	 //code you want executed ; 
+break;	
+
+E.g. 
+Let roll = 4
+
+switch(roll){
+	Case 1: console.log(`rolled 1`)  
+	Break;
+	Case 2: console.log(`rolled 2`)  
+	Break;
+	Case 3:  console.log(`rolled 3`)  
+	Break;
+	Case 4:  console.log(`rolled 4`)  
+	Break;
+Case 5:  console.log(`rolled 5`)  
+Break;
+Case 6:  console.log(`rolled 6`)  
+Break;
+Default: `the condition ${roll} is not possible`.
+}	
+
+
+
+How will this look on vscode is shown below.
+
+
+let roll = 4
+
+
+switch(roll) {
+    case 1:  console.log(`rolled 1`)  
+    break;
+
+
+    case 2:  console.log(`rolled 2`)  
+    break;
+
+
+    case 3: console.log(`rolled 3`)  
+    break;
+
+
+    case 4: console.log(`rolled 4`)  
+    break;
+
+
+    case 5: console.log(`rolled 5`)  
+    break;
+
+
+    case 6: console.log(`rolled 6`) 
+    break;
+ 
+   default: console.log(`the condition ${roll} is not possible`)
+
+
+}
+
+Switch statements always end with a default. This is the code that will be executed if no case matches the condition.
+
+You have to know that switch statements if even theres a list of codes that occur after the case and condition match and a code has been executed, JS will continue to read the code line by line until all cases have been read/tested. So to prevent this from happening you MUST add a break;  after every case. So that once a case and condition match we break out of the switch statement. I.e. JS will read the case code, execute it and then it will read break thus break out of the statement cycle.
+
+
+
+
+
+
+
+
+Also note that we use strict comparison (===) so if the roll = `4` (which is a string) then it won’t work and will instead execute the default code (as shown below)
+
+
+—---------- There's an error in the vscode image (not an error that will affect the code but it has unnecessary {} for the cases that don’t need to be there).--------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Lesson tip:
+
+In a switch statement, each case is evaluated using strict equality (===) against the condition inside the switch statement. In your code, ensure that the cases are written so that they can match. 
+In the below example, although today = `Thu` and the thursday case is ‘Thu’ but they are not strictly equal. Because each case has ‘today ===’ at the start whereas our switch condition only has ‘Thu’. Therefore, only by removing the today=== off each case will we get our answer logged.
+
+let today = new Date().toLocaleString(`default`, {weekday: "short"})
+
+
+switch(today) {
+    case  today === `Mon`: console.log(`rolled 1`)
+    break;
+
+
+    case  today === `Tue`: console.log(`rolled 2`)  
+    break;
+
+
+    case  today === `Wed`: console.log(`rolled 3`)  
+    break;
+
+
+    case  today === `Thu` : console.log(`rolled 4`)  
+    break;
+
+
+    case  today === `Fri`: console.log(`rolled 5`)  
+    break;
+
+
+    case today === `Sat` : console.log(`rolled 6`)  
+    break;
+ 
+    case today === `Sun` : console.log(`rolled 6`)  
+    break;
+
+
+   default: console.log(`the condition ${today} is not possible`)
+
+
+}
+
+To enable each case to be evaluated using other comparisons(not just strict equality) you simply put switch(true) as the condition. Then you can make any comparisons you want.
+By making a comparison statement in each case e.g 
+
+let today = 5;
+
+
+switch(true) {
+    case today < 1: console.log(`rolled 1`)
+    break;
+
+
+    case today === 2: console.log(`rolled 2`)  
+    break;
+
+
+    case  today <= 3: console.log(`rolled 3`)  
+    break;
+
+
+    case today === 4: console.log(`rolled 4`)  
+    break;
+
+
+    case  today >= 5: console.log(`rolled 5`)  
+    break;
+
+
+    case today == 6: console.log(`rolled 6`)  
+    break;
+ 
+    case today === 7 : console.log(`rolled 6`)  
+    break;
+
+
+   default: console.log(`the condition ${today} is not possible`)
+
+
+}
+
+
+
+
+
+
+
+
+
+How to distinguish between if else and switch statements:
+
+If else statements check to see if the statement is true or false compared to the condition in the ().
+Whereas switch statements only compare strict equality between the condition in the () and the cases.
+Only time we can detect true/false using switch statement is if we write switch(true), only then can we make true and false comparisons using the cases.
+
+Ternary (Conditional) Operator:
+
+
+This ternary operator allows us to write if else statements in a cleaner way.
+You can only use the ternary operator for 1 statement (i.e only 1 true or false outcome, unlike else if.
+The syntax for writing these is very simple. Ternary operators are divided into 3 parts (hence the name ternary) 
+
+(Condition) ? Code to be executed if TRUE : code to be executed if FALSE 
+
+but let's show it in an if else statement so that you can see properly.
+Let age = 18
+
+If (age >= 18) { console.log(`You can vote`)} 
+Else (console.log(`You can’t vote`).
+
+
+So we can write this as a ternary operator as:
+(age >= 18) ? `You can vote` : `You can’t vote` 
+
+Now to check if the code works you need to console log - And inorder to call (console.log) this conditional statement we need to give it a variable name, so:
+
+let message = (age >= 18) ? `You can vote` : `You can’t vote`
+
+Now if we console.log(message), you’ll get the answer on the console.
+		
+
+
+
+
+For Loop:
+
+For loops are for repeating a task/code a number of times. For loops are made of 3 elements and are best shown through the for loop syntax.
+
+for () initialiser ; condition ; final expression - Inside the for () we put these 3 elements
+	//CODE-BLOCK i.e code to be executed e.g. console.log()
+} 
+
+Initialiser - Is a variable that has a value. This is executed once before the code block i.e. kickstarting the for loop. The initialiser is always set to 0 ( let i = 0 ) because in JS things are zero indexed therefore allowing the loop to being from the start,
+
+condition - is the condition being tested -  (like in conditional statements) so if it's true then the code block will be executed
+
+final expression - This is the expression (i.e. value) that will occur after the code block has been executed. **Think back to arithmetic compound assignment operators whereby the operator re-assigns the variable without the need to manually do it yourself. The final expression is essential just that**
+
+E.g. 
+
+For (let i = 0 ; i <= 10 ; i++ ) {
+console.log(i)
+}
+
+
+So what does this code show:
+
+So we set a variable (initialiser) and we have the condition that if the value in the variable (which is 0) is less than or equal to 10 - then execute the code block (which will display the value of the variable i. 
+
+Once that code has been executed, the for loop continues and moves onto the final expression. This final expression is showing the value of i and increment it (add 1 to it) and run the for loop again. 
+
+
+
+
+
+
+
+Break statement:
+
+You can add a break statement to break out of the loop early. Just type break; after the block code. Eg. For (let i = 0 ; i <= 10 ; i++ ) {
+Code block 1: console.log(i);
+Code block 2: If (i === 5) break;
+}
+
+This is basically saying - run the loop but if i reaches the value of 5 then break out of the loop.
+
+Continue statement
+
+If you want to skip over an index you simply type continue; after the code block. 
+Eg. For (let i = 0 ; i <= 10 ; i++ ) {
+Code block 1: console.log(i);
+Code block 2: If (i === 5) continue;
+}
+
+So when the i === 5 then 5 will be skipped over and not displayed on the log.
+
+
+For loop in an array:
+
+We can create a for loop for an array and it's simple. Before we start you must know about an array property called length. This property tells us how long the array is. Therefore if in the future we add more items to the array we don’t have to manually go into the for loop to change the condition. The way we use this property is to attach it at the end of the array name e.g. array.length
+
+First determine your array 
+Write the for loop
+
+E.g. 
+Let characters = `Sonic` `Tails` `Knuckles` `Shadow`
+
+For ( let i = 0 ; i < characters.length ; i++){
+	console.log(characters[i])
+}   
+
+What does this code show:
+Initaliser is 0
+Condition is asking- if i is less than the number of items within the characters variable. (i.e. is i less than the length of the array?)
+Console.log is telling us to display the array item i. And so as the loop runs it will have gone through the whole list of items.
+The reason we don’t just put console.log(characters) is because the console will log the full array of items after each loop cycle. But as we specify that we want a specific index within the array then it will print.
+
+
+
+
+E.g.
+
+let array = [1,2,3,4,5,6,7]
+
+
+
+
+for (let i = 0 ; i < array.length ; i++) {
+    console.log(array[i])
+}
+
+^ this will run the loop an log each index at that specific ‘ i ‘ value ^
+
+
+let array = [1,2,3,4,5,6,7]
+
+
+
+
+for (let i = 0 ; i < array.length ; i++) {
+    console.log(array)
+}
+
+^ Whereas this will print the whole array list after each loop iteration.
+
+
+
+NOTE: If you want to console log a sentence with your selected loop items(i.e. template literal) then you must use template literals e.g. console.log(`my favorite character is ${characters[i]) - this will display the text and the name of the character at each loop index.
+
+
+
+
+
+
+Nested arrays and for loops:
+
+This is very cool code. Whereby you can have an array but the items within this array are also arrays.
+
+Your main array which will consists of multiple arrays e.g let test = [ [1, 2], [`A`, `O`, `T`] ]
+So since we have 2 arrays and each of them have multiple items in the list we’re going to need 2 for loops (one for the outer one array and one for the inner one)
+In the code block for the 1st loop is where we will write the 2nd loop
+
+How to structure the 2nd loop:
+
+Since the 2nd loop is inside the main array it doesn’t have its own variable name. Therefore, We need to tell JS to grab information for the individual items within the main array item arrays. 
+For example 
+The main array contains the values  [1, 2 and [`A`, `O`, `T`]
+The first item in the main array is [1, 2]
+And we know that the items in the main array are indexed.
+So to select the first item we get the array name[].length  - in the [] we write down the index we want to pinpoint. 
+Since we don’t use index numbers in for loops but instead use the initialiser name this will be rewritten as MainArray[i].length. 
+So the 2nd for loop this just means, select the main array and the item at index __ and give me its length
+
+
+
+Then we will write console.log inside the 2nd loop’s code block To obtain the 2nd loop values. The reason we write it in the 2nd loop is because you have to treat the loops as isolated events. So if you want the values/data of the loop you must log it inside the loops code block. So if we break out the 2nd loop theres no way we can gain access to its values.  For example if you have 1 loop, try and write the console.log after we close the closing }. You won’t get the details of each loop you’ll just get the final value after the loop has fully completed. 
+
+NOTE: You have to set a different name for the 2nd loops initialiser 
+
+E.g.
+ let outerArray = [ [1, 2], [`A`, `O`, `T`] ]
+
+For (let i = 0 ; i < outerArray.length ; i++)
+	For ( let v = 0 ; v < outerArray[i].length ; v++){
+	console.log(outerArray[i][v];
+}
+{
+
+What the console.log here is saying is that run a for loop for outerArray and select index i and display the index v.
+https://www.youtube.com/watch?v=24Wpg6njlYI&t=51s (for more details.
+
+
+
+
+While/do while loop:
+
+While loop:
+
+A while loops is the same as a for loop which allow you to repeat the code as long as the condition is true. These loops contain the same 3 elements as for loop but they are positioned differently.
+
+While loop structure:
+
+Let i = 0 – initialiser is placed outside the while loop
+
+While (condition e.g. i < 10) {
+	Code block (e.g. console.log(i) )
+	Final expression (i++)
+}	
+
+^ In the above example, the console.log will run each time until i = 11 where the condition will no longer be true hence stopping the loop.
+
+Therefore, the only difference between a for loop and while loop is the structure
+
+
+Do while loop:
+
+This loop is different. This allows you to execute a code even if the condition is not true since JS is read line by line.
+
+The structure is:
+
+Let x = 10
+Do {
+	console.log(x)                 NOTE: We don’t use () in do-while loops.
+	x++
+} while ( x < 10)
+
+
+What does this code mean?
+Since JS is read line by line the computer reads the code as saying:
+We know X = 10 so console log(x). Then increment x (x++).
+So even tho the condition is false (10 is not greater than x) the code was still executed.
+Once that is complete then move to the next line which is while(x < 10).
+The while() in this example is false but if it was true then this will cause the do loop to repeat over and over again until the condition becomes false
+
+
+
+VERY IMPORTANT NOTE:
+In Do-while and while loops inside the while() condition you must specify a start and end value by using the <= or >= or saying x < 10 and x > 0. Otherwise the loop will continue because it doesn’t know when to stop. Hence by making these comparison we’re telling JS where the min and max numbers are.
+
+E.g. 
+
+While (x <= 10) or (x >= 10) or (x < 10 and x > 0)
+
+
+
+So to summarise: 
+
+When making loops you can do them based on an array or just normally based a number times you want to repeat the code (i.e. if using an array to loop over then the condition part of a forloop will look like i < array.length. But if not then we just use numbers i.e. i < 10
+ Whereas f(e.g. let i = 0 ; i <= 100 ; i+= 10) - this for loop code just means I i 0 and if i is less than or equal to 100 then run the code block - After that add 10 to I. So no I will be 10 and the loop continues. 
+
+While loop is just the same as for loop but different structure
+Do loop - lets a code to be executed regardless if the while() condition is true or false. If the while () condition is true the the code block within the do block will repeat/loop until the while condition becomes false.
+And the do loop structure is different
+
+
+
+So this begs the question: “Which loop do we use out of these 3?”
+
+The answer is:
+
+If you know the length of the list of items your going to repeat the code over then we use a for loop.
+If you don’t know the length size then you use a while/do-while loop.
+
+For example:
+If were using an array, we know the length of the size by using the .length property. And so since you know the list size we must use the for loop. Or if making a game whereby the code must only executed 3 times (since we know the iterations then we use for loop).
+
+For a while loop - is used for example when the number of loops needed to complete is based on the users output - so we don’t know 100% how many iterations we will be carrying out
+
+
+
+
+ For - In loop and For Of loop :
+
+
+
+For in:
+
+For in loops are used to iterate over an object
+The for in loop iterates over the property names within an object.
+The syntax for this loop is:
+
+For (variable in object name) {
+	//Code block
+}
+
+The variable is the initializer (so how we used let i = 0. Here we just use let variable name
+The object name is just the object you’re running the loop over.
+
+
+
+
+
+E.g. 
+
+Const myObject = {
+	Id: 1.
+	Name: `Ezio`,
+	age: 25
+}
+ 
+For (let character in myObject) {
+	console.log(character)
+}
+
+This will display the property names ID, NAME, AGE. but not the values next to them.
+
+To loop over the values you need to specify the object name[] and inside the [] you type the variable name i.e. the for in initializer 
+
+
+For (let character in myObject) {
+	console.log(myObject[character] )
+}
+
+
+
+But this format will display them on the log on separate lines e.g.
+Id
+Name
+Age
+1
+Ezio
+25.
+
+
+
+In order to get them to display next to each other you use template literals:
+E.g.
+
+for (let character in myObject) {
+    console.log(`${character} ${myObject[character]}` )
+}
+
+
+
+
+Looping through nested objects:
+
+We know how to access the values of key-value in an object via the for in loop (objectname[x])
+If we are dealing with a nested object and we want to access a specific item we simply use dot notation and refer to the key we want the value of.
+
+For example:
+
+
+const students = {
+    alice: { age: 20, grade: 'A' },
+    bob: { age: 22, grade: 'B' },
+    charlie: { age: 21, grade: 'C' },
+  };
+
+
+  for (x in students)
+  {     
+    console.log(`${x} ${students[x].age}`);
+ 
+  }
+
+In this above example if we console log students[x] we will get age:, grade: i.e. the values of the main object(students). But since we are in an object again then refer back to your fundamentals whereby if we want to access something from an object we use dot notation.
+
+So basically we do students[x].age. This will display all the ages.
+
+
+
+
+
+
+
+
+
+for of
+
+
+These loops iterate over an array not an object.
+The syntax is
+
+For (variable of iterable) {
+	//code block
+}
+
+Iterable is just another word for array
+
+E.g. 
+
+Let myarray = [1, 3, 5 ,7 ,9 ]
+
+For (let x of myarray) {
+	console.log(x)
+}
+
+The variable x represents each item of myarray as you iterate over it. 
+So in this example x, represents the 1 in the first iteration, then 3, then 5 etc.
+
+Therefore this code above Will display the array directly (i.e. no indices needed)
+
+
+You can even have a for of loop iterate over a string
+E.g. 
+
+Let course = `javascript`;
+
+For (let x in course){
+	Console.log(x)
+} 
+
+This will loop through the letters one by one.
+
+
+To select an item within a nested array using a for of loop:
+
+const Array = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+  ];
+
+  for (let x of Array) {
+    console.log(x[2]);
+  }
+  
+
+x[2] Will select the nested arrays and pinpoint index 2 of each nested array. So the log will show you 3, 6, 9.
+
+If however you wanted to select a single value - ask chatgpt to explain
+
+
+
+
+
+
+
+JS Arrays:
+
+Arrays are a type of variable.
+So that means we can modify them once they’ve been assigned(this can be handy if you want to manipulate the date sets at different stages of the code i.e you want x to be on the list of items for these events but not for these other events).
+
+How to add an item to an already established array?
+
+You just select the array name followed by a square bracket. Inside the square bracket you specify the index number that this item will take followed by = and your new item.
+E.g.
+
+Let characters = [`Snake`, `Ezio`, `Vamp`, `Raiden`]
+
+Characters[4] = `Big Boss`       - This means take the array and add big boss to index 4.
+
+
+
+
+How to delete an item?
+
+You type ‘delete’ and select the array and then the index number of the item you want to remove.
+E.g.
+Let characters = [`Snake`, `Ezio`, `Vamp`, `Raiden`]
+Delete characters[1];      - this will delete the Ezio of the list as that was in position index 1
+
+
+One thing to note is that when we delete a value from an array the array index will still equate to the original number. So the items in the list won’t move down to fill up the removed value. They’ll stay in the same position however at the removed index empty or undefined will take up that space. So essentially the item has NOT been completely removed as its still taking up space in the array length.   —- Test it out and console.log and you’ll see it.
+
+
+How to replace a value?
+
+Just liked adding a new item to the list but this time if we specify an already occupied index then the new item will replace it.
+
+E.g. Let characters = [`Snake`, `Ezio`, `Vamp`, `Raiden`]
+
+Characters[2] = `Ocelot`        — This replaces vamp with ocelot.
+
+
+Multidimensional array:
+
+These are just arrays that contain a mixture of different data types (strings, numbers boolean and nested arrays)
+
+E.g. 
+E.g. Let characters = [`Snake`, `Ezio`, `Vamp`, `Raiden`, 10, 20, [`hi`, `hello`, `bye`]].
+
+To access an array within an array then you must first select the main array, next identify the index of that inner array and write it in []. Then identify the index of the item within that next are you want to target and put that also in [].
+
+E.g I want to select `bye` so this is what it will look like
+
+Console.log (characters[6][2])   - this is saying go to characters, select the 6th index in that array and then select the index 2 of that inner array.
+ 
+
+Objects can also be modified like arrays:
+
+Since objects are variables and just like any variable you can modify its properties and values. 
+E.g. let myObject = {
+			Name: `sonic`,
+			Color: `blue`,
+			Speed: 1000
+}
+
+To change a property you just select it i.e. myObject.name = …..
+Then just reassign the name to something else.
+
+You can even add new properties in the same way but you have to give the property a name you haven't used yet e.g. I want to add game as a property
+You do myObject.game = `SEGA`
+
+You can delete e.g. delete myObject.speed  - this will delete the speed property and its value
+
+When you log this you’ll see your modifications appear.
+
+
+
+
+Array Methods:
+
+How to select the last value in an array?
+
+Let characters  =   [`Snake`, `Ezio`, `Vamp`, `Raiden`]
+
+character[Characters.length - 1]      - This always selects the last item within the array list. What this means is take the length of the array, which in this example is 4. Then - 1 makes it 3. And as you know arrays are zero indexed therefore `Raiden` is index 3.
+
+indexOf():
+
+This finds out the index number at which an item is placed within an array. If the item doesn’t exist in the array then it will return -1.
+
+Let characters  =   [`Snake`, `Ezio`, `Vamp`, `Raiden`]
+
+console.log(characters.indexOf(`Ezio`)); - this will display 1, Because ezio’s index number is 1.
+
+console.log(characters.indexOf(`Sonic`));  - This will display -1, because sonic doesn’t exist.
+
+
+
+includes():
+
+This finds out if a value is present in the array items list. This method returns a boolean (true or false) if the value is present or not.
+
+Let characters  =   [`Snake`, `Ezio`, `Vamp`, `Raiden`]
+
+console.log(characters.includes(`Snake`))  - this will display true. Because snake is present in this array. If it wasn’t present then it would’ve returned false.
+
+
+Note: Includes is case sensitive. So if the words in the method don’t match exactly like in the array list then it will return false.
+
+
+
+pop() and shift():
+
+pop() - Removes the last item in the array
+
+shift() - Removes the first item in the array
+
+Dont get this confused with the delete option in an array. Unlike delete option, These methods will completely remove that item from the list therefore, the index numbers will change (as the list will fill up the empty spaces). And finally since the item is completely removed, when you console.log it you WILL NOT see ‘empty’ or ‘undefined’ in place of the removed item like you see with the delete option. 
+
+E.g. Let characters  =   [`Snake`, `Ezio`, `Vamp`, `Raiden`]
+
+console.log(characters.shift()) – This will display the item that has been removed, so in this case `Snake`.
+
+If we were to console.log(characters) it will display Ezio, Vamp, Raiden
+
+
+push() and unshift():
+
+push() - Adds an item to the end of the list
+
+unshift() - Adds an item to the Start of the list
+
+FYI: You can add more than just one item at a time e.g. characters.unshift(`liquid`, `ocelot`).
+
+concat();
+
+This merges 2 or more arrays together (just like the string.concat method). To make one big array.
+
+E.g. 
+Let characters  =   [`Snake`, `Ezio`, `Vamp`, `Raiden`]
+Let Supers = character.concat([`Spider-man`, `Wolverine`, `Iron-man`])
+
+console.log(Supers) - Will display  Snake, Ezio, Vamp, Raiden, Spider-man, Wolverine, Iron-man
+
+This is because Supers is essentially 1 big array ie. [`Snake`, `Ezio`, `Vamp`, `Raiden`, `Spider-man`, `Wolverine`, `Iron-man`]
+
+
+This variable supers is saying - take characters and attach the new array to it.
+You could’ve assigned supers the new array without the characters. At the start and then when console log you could write character.concat(supers).   – Essentially theres multiple ways of using these variables. But for this case we want the supers variable to have ALL the characters + The new characters. If we just wanted the variable to have the New characters then we wouldn’t use character.concat
+
+
+join();
+
+This takes an array and converts it into a string. What you place within the () will be what is used to separate the items in the string. REMEMBER TO PUT `` inside the () because we are working with a string now.
+
+Let characters  = [`Snake`, `Ezio`, `Vamp`, `Raiden`]
+
+characters.join(`|`) – This will display once console logged Snake | Ezio | Vamp | Raiden. The array is now a string and is separated by a |. By default it is separated by a comma. Also you can add a space to the (` |`) so that then symbol occupies a space and doesn’t attach directly to the work
+
+
+split();
+
+This converts a string into an array.
+
+Let supers = `Batman, Superman, Flash`
+Let newArray = supers.split(`, `)     - inside the () I want to specify how to split them so (`, `) and again we use the `` because we are working with a string.
+
+console.log(newArray) will display [`Batman`, `Superman`, `Flash`]
+
+slice( , ):
+
+This removes a section from an array. So within the () you have to determine the 2 values. The first one is the 1st index you want to start the slicing and the 2nd index is the where you want to end the slice. VERY IMPORTANT to know that for the 2nd value you have to go one higher than index number you want. Because the way JS works is it will slice Exactly at the 2nd index hence we go one higher to make sure it includes the 2nd index value.
+
+E.g. 
+
+Let characters =  [`Snake`, `Ezio`, `Vamp`, `Raiden`, `Spider-man`, `Wolverine`, `Iron-man`]
+
+We want to slice Spiderman, Wolverine and iron-man.
+
+Let slicedArray = characters.slice(4,7) 
+
+console.log(slicedArray) will display Spider-man, Wolverine, Iron-man
+
+This is because index 4 is spiderman, index 5 is wolverine and index 6 is iron-man. But since JS slices exactly at the 2nd value inserted in the slice() then to include iron-man we have to go one index higher so we use 7.
+
+in JavaScript, when you use the array `slice()` method, it creates a shallow copy of the original array. This means that the new array contains references to the same objects or arrays as the original array, rather than copies of those objects or arrays themselves. 
+
+So, if you modify the contents of the objects or arrays within the new array (e.g., by removing or altering them), it will indeed affect the original array, because they are referencing the same underlying objects or arrays. However, if you simply modify the elements of the new array directly, without affecting the objects or arrays they reference, it won't affect the original array.
+const originalArray = [{name: "John"}, {name: "Jane"}];
+
+// Creating a shallow copy using slice()
+const newArray = originalArray.slice();
+
+// Modifying an element of the new array directly
+newArray[0].name = "Alice";
+
+console.log(originalArray); // Output: [{name: "Alice"}, {name: "Jane"}]
+
+We are directly modifying the object ^ 
+
+const originalArray = [{name: "John"}, {name: "Jane"}];
+
+// Creating a shallow copy using slice()
+const newArray = originalArray.slice();
+
+// Modifying an element of the new array directly
+newArray[0] = {name: "Alice"};
+
+console.log(originalArray); // Output: [{name: "John"}, {name: "Jane"}]
+
+^ we are not modifying the object we removed it from the new array with a new object hence the original object is intact. 
+
+
+splice( , , )
+
+This replaces an item in an array with another item. Inside the () there must be 3 elements separated by a comma.
+
+1st element = index number of the item you want to replace
+2nd element = the number of how many items you want to replace thereafter the index number you mentioned prior. E.g you only want to remove that one item, you’ll just put 1. But if you want to remove two items then you’ll put 2 etc..
+3rd element = the value you want to add.
+
+
+You can even add an item without having to remove an item using the splice() method. 
+You do this by selecting 0 in the 2nd element within ().
+
+
+Let characters =  [`Snake`, `Ezio`, `Vamp`, `Raiden`, `Spider-man`]
+
+Let newcharacters = characters.splice(1, 1, `Big Boss`)
+
+This code means - removed item at index 1 (which is Ezio), How many items you want to delete, just 1 so only ezio is removed. And replace it with `Big Boss`
+
+console.log(newcharacters);
+^ Will display the item that was removed
+
+
+console.log(characters);
+^ Will display the updated array with the new item replacing the old one.
+—-------------------------------------------------------------------------------------------------------------
+
+Splice() can also be used to delete items completely from a list. 
+
+pop() and shift() can only delete the 1st or last item but with splice we can delete any item completely. This leaving no empty spaces or unoccupied index numbers.
+To do this we just use 2 elements indie the splice(). The 1st one targeting the index we want to delete and the 2nd one to determine how many items we want deleting.
+
+E.g.Let characters =  [`Snake`, `Ezio`, `Vamp`, `Raiden`, `Spider-man`, `Wolverine`]
+
+characters.splice(3, 1) - Will delete ‘Raiden’
+
+—---------------------------------------------------------------------------------------------------------------
+
+You can even add an item without having to remove an item using the splice() method. 
+You do this by selecting 0 in the 2nd element within ().
+
+E.g.Let characters =  [`Snake`, `Ezio`, `Vamp`, `Raiden`, `Spider-man`, `Wolverine`]
+
+character.splice(2, 0, `Liquid`) - this will add `Liquid` to the array at index 2 and will push vamp to the 3rd index causing a cascade and pushes the other items in the list up one index.
+
+reverse():
+
+This reverses the array. And the last item now becomes index number 0.
+
+
+
+Sort():
+
+This sorts our array in alphabetical order.
+
+
+
+flat() does as the name suggests, it flattens the entire array therefore any nested array will become un-nested and will be just one big array of non-nested items.We can then use the spread operator to spread over the entire array
+
+e.g. 
+
+let array = [1,2,3, [5,5,5]]
+
+
+
+
+let newArr = array.flat()
+
+
+console.log(newArr);  // OUTPUT [1, 2, 3, 5, 5, 5]
+
+
+
+
+The flat method in JavaScript can take an optional argument that specifies the depth of flattening. The argument represents how deep you want to flatten nested arrays. Here are the possibilities for the argument:
+
+No Argument:
+
+If you don't provide an argument or provide 1, the flat method will flatten the array to a depth of 1. This means it will flatten one level of nested arrays.
+
+
+
+let array = [1, [2, [3]]];
+let flattenedArray = array.flat(); 
+console.log(flattenedArray); // Output: [1, 2, [3]]
+
+
+Positive Integer:
+If you provide a positive integer n, the flat method will flatten the array up to n levels.
+
+
+
+let array = [1, [2, [3]]];
+let flattenedArray = array.flat(2);
+console.log(flattenedArray); // Output: [1, 2, 3]
+
+
+Infinity:
+If you provide Infinity as the argument, the flat method will recursively flatten all nested arrays, regardless of their depth.
+
+
+
+let array = [1, [2, [3]]];
+let flattenedArray = array.flat(Infinity);
+console.log(flattenedArray); // Output: [1, 2, 3]
+
+
+
+Array Iterator(loop) Methods:
+
+These Methods allow us to loop through an array and apply a function.
+
+
+forEach():
+
+This method allows us to loop through and carry out a function on each of the array items. 
+
+This method consists of a function. Within the function () you can have 3 parameters. 1) Value 2) Index 3) array. Index and array parameter are not necessary unless you want to use them. However VALUE is mandatory. Then inside the function {} you have your code block. 
+
+^ This is all written inside the forEach() brackets.
+
+
+Here is a forEach() syntax:
+
+Let characters =  [`Snake`, `Ezio`, `Vamp`, `Raiden`, `Spider-man`, `Wolverine`]
+
+characters.forEach(
+	function(value, index, array) {
+	//Function Codeblock
+}
+)
+
+So what does this code mean?
+
+We can call the function into action by referring to one of the 3 parameters.
+This code means, loop over this array based on the value or index or array parameter and carry out the function
+
+value - refers to the item in the CURRENT loop cycle. You can give this any name, 
+it doesn’t have to be value. Just like i = 0 in a for loop, It can be changed to anything.
+Index  - Refers to the index number of the item in the CURRENT loop cycle 
+Array  - refers to the array being used.
+
+
+So if we select value inside the function () then it will display the items stored in the array.
+If we select index it will display the index number of the items
+
+E.g. 1:
+If we want to display the items on the log we just do
+characters.forEach(
+	function(value, index, array) {
+console.log(value).
+}
+)
+
+Then the forEach method will loop over the characters array and display the values.
+
+
+Eg2:
+
+characters.forEach(
+	function(value, index, array) {
+	console.log(`the index of ${value} is ${index}`)
+}
+)
+
+This code will display the value and their index number i.e. `The index of vamp is 2`
+
+
+In summary: The forEach() method behaves like a for loop but this time we select the items within the array using the value or index or array parameter.
+The 3 parameters act like variables hence we can use template literals on them.
+
+You must note that the index and array are optional parameters and you don’t need them to be there if you’re not planning on using them
+
+characters.forEach(
+	function(value) {
+	console.log(`the best character is ${value}}`)
+}
+)
+
+This is saying - Log to the console this sentence and add the name of the current value in the current loop cycle.
+https://www.youtube.com/watch?v=49btOoxofyA
+
+
+
+This saves us from having to use the initialiser/condition/final expression and use arrayname[i] to loop through each item
+
+
+What if you want to display the item based on the index number only?
+
+In your function() {} curly braces you use an if statement with the condition (index === 2) {} and within the if statement curly braces you simply write console.log(value). This will display the item at index 2.
+
+
+
+let myArray = [`A`, `B`, `C`, `D`, `E`];
+
+
+myArray.forEach(function (value, index){
+       if (index === 2){
+        console.log(value);
+       }
+    }
+)
+
+
+
+VERY IMPORTANT NOTE: The forEach method does not return a new array or any value. It iterates over the elements of the array and applies a provided function to each element. forEach is just like a for loop and so it cant use a return value within its function. forEach is just for looping purposes. The other array iterator methods are for returning a different value or array.
+
+map():
+
+This method is used to loop over the array but return a different version of the current array without affect the original array
+
+Syntax for this method is as follows
+
+You must write a function. Give it a name and in the () write down value or any name you want. - remember this value represents the current item within the current loop cycle.
+Inside the function curly brackets you type the keyword return followed by value (i.e array items) followed by the feature you want the new array to have e.g. you want the strings to be all lowercase or you want the numbers doubled.
+Finally you create a new variable and assign it the name of your original array.map(). And inside this () you call the function you named earlier
+
+E.g. 1
+
+Let characters =  [`Snake`, `Ezio`, `Vamp`, `Raiden`, `Spider-man`, `Wolverine`]
+
+Function Letters(value){
+	return value.toUpperCase()
+}
+
+Let newCharacters = characters.map(Letters);
+
+What is this code doing?
+First thing you must remember is that functions are variables.
+This code is setting a function with the name Letters. The data inside this function variable is set to value (which represents the items within the array at the current loop cycle)
+The code to be executed when this function is called upon is to return the value to all uppercase letters. Basically saying convert each item one by one in the array into capital letters. The reason we put return followed by value followed by action we want is because if we didn’t specify the value in this sentence then JS wouldn’t know what items we’re referring to.
+A secondary variable is created to house the new array we're making.
+Finally to make this new array contain the upgraded version of the current array we select the original array.map() and inside the () we call the function
+What .map() does is it allows us to loop over the original array and apply the function we created. Thus giving these new items to be stored inside the second array variable we made.
+To see the result just console.log(newCharacters) and you’ll see the new array
+
+
+
+E.g. 2
+
+Let num = [1, 2, 3, 4 ,5]
+
+Function doubleIT(value) {
+	return value *2
+} 
+
+let newnum = num.map(doubleIT)
+
+
+You don’t necessarily need to write it like this. Whereby you have a standalone function. You can instead write it like this so that its similar to how you’ve written the other array iterator methods: Therefore, we can use anonymous function.
+
+let num = [1, 2, 3, 4 ,5]
+
+
+let newnum = num.map(
+    function (value) {
+    return value *2
+} )
+
+
+console.log(newnum);
+
+
+
+filter(): 
+This loop method will go through an array and put each item through a test(this can be a conditional statement or just a comparison test). If the statement is true, the value will get added to the new array. If its false then it won’t get added.
+
+To use the filter method we need to create a new variable which will be assigned the target array.filter(). Just like the other array methods, within the () we must add a function that has a value parameter. 
+We just simply put the return test/conditional statement within the functions {}
+
+E.g. 
+
+Let numbers = [1,2,20,30,45,50,75,77,100]
+
+let evenNumbers = numbers.filter(
+function(value) {
+
+	return value % 2 === 0    – This is the test. Its saying test if value /2 gives remainder zero. If true then return these true values.
+})
+
+What this code is saying, is run the numbers array and test each item within that array and see if whenever a number is divided by 2, if the remainder is 0 then add it to the new array.
+Eg 2
+
+This is another way of writing this. Instead of return value % 2 === 0, we can put it into an if statement:
+
+let numbers = [1,2,3,4,5,6,7,8,9,12,11,14,17,]
+
+
+let odds = numbers.filter(function(value){
+    if (value % 2 === 0){
+        return  value
+    }
+})
+
+
+reduce(): 
+
+This method is used when dealing with numbers
+This method takes an array of numbers and reduces it into a single outcome
+Therefore, we use an extra parameter called ‘total’ in this function. This just takes into account the total amount within the current loop cycle considering it added the previous array numbers
+
+e.g. 
+
+let numbers = [2,4,6,8,12,20,25,30]
+
+Let newNumbers = numbers.reduce(
+function(total, value){
+	
+	return total + value 
+}
+)
+total + value - You can have - or * or / all the numbers it doesn’t always have to be adding them.
+
+
+some():
+
+Iterates over our array to see if a test/conditional statement is true for at least one item. If one of them passes then it returns boolean `true` but if none pass then it returns `false`.
+
+E.g. 
+
+Let numbers = [1,2,3,11]
+
+Let testNumbers = numbers.some(
+	function(value)
+	      return value > 10    - This here is the test. Its saying if value is greater than 10 then return the result. In this case the return will be ‘true’
+
+
+E.g 2
+
+Just like filter you can write it in a different way
+
+let numbers = [1,2,3,11]
+
+
+let testNumbers = numbers.some(
+    function(value){
+          if (value > 10){
+            return value
+          }
+}
+)
+
+I personally prefer writing it this way as its clear to see the test. But the 1st method is shorthand
+
+
+
+
+every():
+
+Similar to some() method but this time EVERY value needs to pass the test/condition (i.e. must be true). Then and only then we will get a boolean ‘true’ If every value doesn’t meet the condition then it will return ‘false’
+
+
+e.g 
+
+let numbers = [1,2,3,11]
+
+
+let testNumbers = numbers.every(
+    function(value){
+          if (value > 10){
+            return value
+          }
+}
+)
+If we do console.log then we will get ‘false’ because not all items are greater than 10
+
+.
+find():
+
+Iterates through the array to find a certain value. If the array contains the value then it returns that target value. IF it is not present inside the array then it will return undefined.
+
+e.g. 
+
+Let characters =  [`Snake`, `Ezio`, `Vamp`, `Raiden`, `Spider-man`, `Wolverine`]
+
+let findCharacter = characters.find(
+function(value){
+return value === `thor`
+}
+)
+
+What this code is saying, loop through this array and look for the value ‘thor’
+
+
+findIndex():
+
+Similar to find() whereby it Iterates through the array to find a certain value. But this time instead of returning the value itself it returns the index of that target value. If the value doesn’t exist then it returns -1
+
+E.g 
+
+Let characters =  [`Snake`, `Ezio`, `Vamp`, `Raiden`, `Spider-man`, `Wolverine`]
+
+Let test = characters.findIndex(
+	function(value){
+	Return value === `Ezio`
+})
+
+console.log(test) will return 1 because index 1 is where Ezio is positioned.
+
+
+Summary:
+All these iterators methods are anonymous functions but if you want to give it a name and call it using the function name then look at map() as that has an example of the syntax. However, the best way is to just do it anonymously.
+
+
+
+Sets:
+
+Theory:
+
+Sets are similar to arrays but there are 3 benefits of using sets over arrays:
+
+Sets prevent duplicate values. Whereas Array’s can have the same value repeated many times
+It’s easier to delete values from a set compared to arrays. This is because with Array’s we need to use the splice() method whereas with sets we just use the actual value
+Sets allows us to determine if a value exists inside the set. Whereas with Arrays we have to use the includes() method.
+
+How to setup a set?
+
+Create a variable and assign it ` new Set().
+
+E.g. 
+
+Let fruits = new Set()
+
+
+
+How to add values to sets?
+
+variableName.add()  - inside the () you add your value.
+
+E.g. 
+
+Fruits.add(`apple`).
+
+But if you want to add multiple values you can just append ‘.add() at the end like so:
+
+fruits.add(`apple`).add(`banana`).add(`cherry`)
+How to delete values from sets?
+
+variableName.delete() - Inside the () you write the value you want to delete.
+
+
+How to check if a value is present within a set?
+
+
+variableName.has() - Inside the () you write the value you want to check for. If its present you’ll get a boolean ‘true’ if its not present you’ll get `false`
+
+
+How to check the length of the set?
+
+
+variableName.size - This will show the length of the set. Note: how we don’t need a ().
+
+
+How to clear the set?
+
+
+variableName.clear() - This removes all the values from the set
+
+
+Important feature:
+
+
+We can take an array and turn it into a set (But this doesn’t affect the original array). We do this by adding the array name into the sets ().
+
+
+E.g.
+
+
+Let arrayFruits = [`apple`, `orange`, `cherry`, `banana`]
+
+
+Let fruits = new Set(arrayFruits)
+
+
+This puts all these values into a set and then allows us to use the set methods to do what we want(add, delete, check size or value etc)
+
+
+How to iterate through a set?
+
+forEach()
+For of loop
+
+Are the only ways to iterate through a set.
+
+JS Functions:
+
+Functions are blocks of code that we can call whenever we want that code executed.
+
+5 main ways if creating a function:
+
+Function declarations 
+Function expressions
+Arrow functions
+
+Function constructors 
+Generator functions (This is very rarely used so no need to go into detail about this)
+
+
+Function declarations:
+
+
+To declare a function we use the function keyword and then give our function a unique name followed by parentheses (). Then we add curly brackets {} that contain the code for the task we want to perform.
+
+E.g. 
+Function message() {
+	console.log(“hello”)
+}
+
+Then to call this function to action we just type the function name with the parenthesis. Because the parenthesis are responsible for bringing the function into action
+
+E.g. 
+message();    - And so in your console you’ll see the word hello.
+
+console.log(message) - This won’t print the code `hello` it will just display the entire function on the log. The only way to execute a function code is to have the function name followed by brackets
+
+
+We can code anything inside a function but whatever is inside the function is only available to the function.
+This is because anything inside the function is known as a local variable or local code. Whereby if we were to try and execute that code outside the function it won’t work.
+
+E.g. function games() {
+	let title = `sonic`
+}
+
+If were to say console.log(title) we would get an error saying title is undefined - this is because title is only specific to the function. This similar to loops - how if we create something new inside a loop we can’t use it outside because that new generated code within the loop is specific to the loop.
+We also have global variables and these are just the normal variables we have and we can use them anywhere. 
+
+
+
+There are anonymous functions - These are functions that have no name and the only way to call these functions is via the event handler (events lesson you’ll learn about soon) or function expressions.
+
+
+Function Expressions:
+
+These are anonymous functions stored in a variable and to call this function we just use the variable name followed by ().
+
+E.g. Syntax:
+
+Let game = function() {
+	console.log(`AC2`)
+}
+
+game()    - This will call the function and execute the code.
+
+It is very important that you must have the () after the variable name because thats how we tell the code we are using a function. 
+
+
+Since the function is stored in a variable (game) and you know we can store variables inside other variables.
+ 
+E.g. 
+
+let myNewVariable = game.
+
+Now we can call the function by doing myNewVariable().
+So now we have 2 ways to call that function.
+
+
+
+Main 2 difference between function declaration and expression:
+
+Function expression is anonymous and stored in a variable
+Function declarations can be called into action before the function has been created. Since JS goes line by line we can’t use something before it has been declared but with function declarations we can because JS reads and stores function declarations first.
+Hence we can all on these functions before we’ve reached their initial declaration.
+Whereas with function expressions we cant do that because variables can only be used once they've been declared. 
+
+
+
+Parameters and Arguments:
+
+Parameters are written inside the () and we treat them like variables and use them inside the function code block.
+When you call the function, inside the () is where you’ll define the values you want to give that parameter. These values that are written on the called function are called arguments
+
+e.g . function favGame(game){
+	console.log(`My fav game is ${game}`)
+}
+
+favGame(`MGS`)
+
+This will display `My fav game is MGS`
+
+
+You can have a list of parameters (but they must be separated by commas) and when you come to give the arguments (i.e. values) to these parameters on the called function () then you must know that they will occur in the order that the parameter was written
+
+
+e.g . function ninjaTurtle(name, weapon){
+	console.log(`$name} uses the ${weapon}`)
+}
+
+ninjaTurtle(`Donatello`, `bo staff`)
+
+This will print: Donatello uses the bo staff
+
+Default parameters:
+
+If we don’t use enough arguments to occupy the number of parameters given then automatically these arguments are given a value of undefined. This can create a problem when using numbers because a number mixed with an undefined argument will print NaN.
+
+
+e.g1 . function sentence(name, age){
+	console.log(`My name is ${name} and I am ${age}`)
+}
+
+sentence(`Jon Jones`) 
+
+This will print: My name is Jon Jones and I am undefined 
+
+E.g. 2 function num(num1, num2) { console.log( num1 + num2) }
+
+num(5, 5)
+
+This will print: 10.
+
+If it was num(5)
+
+This will print NaN because this console log is saying 5 + undefined. You cant do arithmetic on strings.
+
+
+
+To counter this, We can assign parameters a default value to prevent any missing arguments causing an undefined output.   
+
+function num(num1 = `insert a number` , num2 = `insert a number` ) { 
+console.log( num1 + num2) 
+}
+
+num()
+
+
+
+Or you could use an if else statement
+
+function num(num1 ) { 
+	If (num 1 === undefined) {
+console.log(`Select a number`)
+} else (console.log(num1)
+}
+
+num() will print: Select a number - since the argument is undefined.
+
+
+
+
+if we were to use more arguments than we have parameters, then it's on the first come first serve basis and the rest of the arguments are ignored. I.e. the first arguments that occur will be displayed and the rest are ignored.
+
+arguments keyword is used to access the whole list of arguments as it puts them in an array-like group. 
+
+E.g function num(num1, num2){
+	console.log(arguments)
+}
+
+
+num(5,5,1,2,3,4)
+
+This will print: The whole list of arguments (i.e. 5,5,1,2,3,4). 
+
+Since the argument keyword gives an array like group, we can select specific arguments by using the [index number]
+
+E.g function num(num1, num2){
+	console.log(arguments[3])
+}
+
+num(5,5,1,2,3,4)
+
+This will print: 2
+
+
+
+Examples below.
+function favFood(response) {
+    console.log(`Your favourite food is ${response}`);
+}
+
+
+favFood(`Burgers`);
+
+
+
+
+function favdish(response = `empty, please add your fav food`) {
+    console.log(`Your favourite food is ${response}`);
+}
+
+
+favdish()
+
+
+function fav(response) {
+    if (response === undefined){
+        console.log(`Please enter your fav food`);
+    } else {console.log(response);}
+}
+
+
+
+
+fav(`Pizza`)
+
+
+
+
+
+
+
+
+
+
+
+
+function compare(name, color){
+    if (name === `sonic` && color === `blue`) {
+        return `${name} is ${color}`
+    } else {name !== `sonic` || color !== `blue`
+    return `This is not sonic`
+}
+
+
+}
+
+
+let char = compare(`sonic`, `green`)
+
+
+console.log(char());
+
+
+
+
+
+JS return:
+
+In JavaScript, when you call a function, it can have two kinds of values: a return value or undefined.
+Any function that doesn't use the ‘return’ keyword will return undefined
+
+E.g. 
+
+function name(){
+		
+}
+
+When we console.log(name()), This will print Undefined because we don’t have a return key word with a value attached to it.
+
+E.g. 2
+
+function name(){
+	return `Sonic`
+}
+
+console.log(name()) Will print Sonic because it has a return value.
+
+
+
+Important to note that once the return code has been executed we break out the function. Therefore, anything after this will not be executed. 
+We can only use 1 return per code block. So if you have an if else statement you can use 2 return values(one for the if and one for the else statement) because these 2 have their own code blocks
+
+E.g. 
+
+let login = function(password){
+	if (password ===`test123`){
+	return `Successfully logged in`
+} else { return `Incorrect password`}
+}
+
+
+console.log(login(`test123`)) will print Successfully logged in
+console.log() will print Incorrect password
+
+
+
+
+Why do we use return value:
+
+It allows us to obtain a value and reuse it in other parts of our code. Right now I'm only using console.log to output, but future projects may require an event or something to happen and for that thing to happen I must feed it the return value of a function. 
+
+
+
+
+
+
+
+
+
+
+
+
+Final notes for all functions (so far - more on functions to come):
+
+Always make sure you store the called functions within a new variable. So that we can easily call them just by writing the variable the function its stored in. this saves the code from having name() sum() etc…
+
+E.g. 
+
+
+
+let login = function(password){
+	if (password ===`test123`){
+	return `Successfully logged in`
+} else { return `Incorrect password`}
+}
+
+So instead of writing conole.log(login(`test123`))
+
+We can do 
+ 
+Let result = login(`test123`)
+
+console.log(result) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+How to loop through an array using functions:
+
+Step 1) Create an array e.g. a numbers array (we’ll start of with a simple array)
+Step 2) Create a function EXPRESSION
+Step 3) Give the function a parameter e.g. value.
+Step 4) Create a for loop. 
+Step 5) Inside the {} of the for loop, create an if statement to create a condition for when a number is less than 10. Then let the action of the if statement be console.log 
+Step 6) Create an else statement and console.log for when the number is above 10.
+
+Here you have 2 choices. If you want to make your function versatile and enable different arrays to be passed through it or you want to make it specific for that one array.
+
+Single array function: If you want the function to be specific to that array then WE DON’T NEED A PARAMETER. Therefore in the loop we will have arrayname.length, in the if statement we will have arrayname[i] - to pick out the values within that specific array.
+
+Versatile function: If you want your function to be versatile then we must use a parameter. This parameter will allow us to pass through any array into the function when we call it.
+To do this, we must have a parameter, then in the for loop we will have parametername.length, then in the if statement we will have paramtername[i]. 
+The parameter is just referencing whatever array we are passing through - so instead of creating a completely new function with the same code, we just have one function that can have many arrays passed through it.
+
+
+let array = [2,4,6,8,10,12,14,16]
+
+
+let arrfunc = function(number){
+    for (i = 0; i < array.length; i++){  
+        if (number[i] < 10 ) {
+        console.log(`${array[i]} is less than 10`);
+    } else {
+        console.log(`${array[i]} is greater than 10`);
+    }
+   
+}
+}
+
+
+console.log(arrfunc(array));
+
+
+
+
+The code I written above works well but as you can see in the for loop opener I am using an array.length, so I am only making this function for that specific loop.
+If I want to make this loop universal and can pull up any array, then I have to use the paramater.length.  This  ensures that the loop iterates over the length of the array passed as an argument.
+Also for the console logging part, again were only referring to the specfic array I matchMedia. But to make it undriversal its best to put the paramter name[].
+For the if statment I did it correctly, I used paramter[] so I don't know why I moved to a different selector.
+
+
+
+
+
+Here is chatgpt’s help:
+
+let array = [2, 4, 6, 8, 10, 12, 14, 16];
+
+
+let arrfunc = function(numbers) {
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] < 10) {
+            console.log(numbers[i] + ' is less than 10');
+        } else {
+            console.log(numbers[i] + ' is greater than or equal to 10');
+        }
+    }
+};
+
+
+arrfunc(array);
+
+
+
+Loop Condition:
+Updated the loop condition to use numbers.length instead of array.length. This ensures that the loop iterates over the length of the array passed as an argument.
+Console Logging:
+Updated the console.log statements to include the correct array element (using numbers[i] instead of array[i]).
+Function Call:
+Removed the console.log(arrfunc()); statement. The arrfunc function doesn't return anything explicitly, so calling console.log(arrfunc()); would log undefined. Instead, you should call the function directly as arrfunc(array); to process the specified array.
+
+https://chat.openai.com/share/288404d3-0f71-40c3-98de-26153ba3bd14
+(For more information on this as well as how to use return value on these loops (bottom of the page))
+
+
+
+
+
+
+ 'this' keyword:
+
+
+In JavaScript, the ‘this’ keyword refers to the object that is executing a function. 
+
+Rule of thumb:
+
+In an object, If we store a function in an object then that function is known as a method. Here, this refers to the object itself 
+
+If the function is a regular function e.g. function declaration/expression and is not placed inside an object {}, then this refers to the global object which is the browser window.
+Similarly, if we use a forEach(function()), yes the function is within an object however, the function is executed by the global object, not the array object. Therefore, this refers to the window. 
+However, if you want the array to be the object executing the function thus making ’this’ refer to the array you must add the name of the array as the 2nd argument within the forEach() after you’ve closed the function {}. 
+
+E.g. const numbers = [1, 2, 3];
+
+numbers.forEach(function(element) {
+  console.log(element, this);
+}, numbers);
+
+the second argument of forEach is often used to specify the value of this within the callback function. If you don't provide the second argument, this inside the callback will typically refer to the global object. You explicitly set the second argument of forEach to numbers, so inside the callback function, this refers to the numbers array. Sounds weird to do such a thing since at the opening sentence we’re attaching the array method to an array but this is how JS works.
+
+
+Alone, this refers to the global object (because its not stored in an object therefore the parent object is the window)
+
+In a function, in strict mode, this is undefined. (I haven't learnt this yet)
+
+In an event, this refers to the element that received the event. 
+
+
+Methods like call(), apply(), and bind() can refer this to any object.
+
+
+
+Refresher:                                                        
+Methods are functions stored as object properties (in other words, methods are functions that can only be used by that specific object i.e. array methods)
+
+
+
+
+
+
+
+
+
+
+
+
+
+Function inside an object:
+
+Never use function expression inside an object. We only use anonymous function declaration. - this is because the function ‘name’ (i.e. what we use to invoke it) is given by the object key its stored within. E.g. 
+Object {
+	Name: `Sonic`
+	Message: function(){}
+}
+
+However with ES6 we can write functions contained within an object without the need of having a ‘function’ keyword. Instead we just give the function a name followed by the brackets (){}. E.g. 
+
+const myObject = {
+  list() {
+    console.log("This is a method!");
+  }
+};
+
+
+As we know, a function inside an object is known as a method. And inside this function code block if we want to refer to any items within the object we can use objectname.key (like we are used to) but best practice is to use this.key - This is because sometimes we may change the object name and then having to go deeper inside the functions to alter the name is tedious. Essentially treat ‘this’ as if it was the name of the object.
+
+E.g. 
+
+let object = {
+    name: `sonic`,
+    platform: `sega`,
+    release: function()
+    {
+        console.log(`my fav character is ${this.name}`);
+    }
+}
+
+
+object.release()
+
+
+
+Function inside Nested objects:
+
+let object = {
+    name: `sonic the hedgehog`,
+    platform: `sega`,
+    year: 1991,
+    character: {
+        main: `Sonic`,
+        Side: `Tails`,
+        enemy: `Robotnik`,
+        list(){
+            console.log(`${this.main}, ${this.Side}, ${this.enemy}`);
+        }
+    }
+}
+
+
+object.character.list()
+
+
+
+
+
+
+The function is in the character object and since this function is being called by that object, ‘this’ refers to the character object.
+
+
+Call, Apply and Bind methods:
+
+Currently we know that ‘this’ refers to the parent object (object that executes the function). However, the use of Call, apply and bind methods allow us to specify what ‘this’ refers to.
+
+To explain the call and apply method we need an example first.
+
+
+Let game = {
+	Title: `Sonic the hedgehog`,
+	Year: 1991
+}
+
+function info(){
+	console.log(`${this.title} was released in${this.year}
+}
+
+You see how we wrote the function OUTSIDE the object but still used ‘this’ keyword. If we were to invoke this function we will get `undefined was released in undefined`. Because as it stands the ‘this.title’ doesn’t refer to anything.
+
+Call and apply and how to use them:
+
+These 2 methods are very similar - And they allow us to give a reference to ‘this’. To use them we simply attach them to the function we're calling and within the () we write down the object we want to reference. So in the above example our function is info() and the object that contains the keys title and year is ‘game’
+
+info.call(game)   or info.apply(game)   - This will then display the console log as intended.
+
+Call and apply differ when we have function parameters. Call and apply have the ability to use arguments to fit these parameters but their syntax differs.
+
+E.g. 
+
+Let game = {
+	Title: `Sonic the hedgehog`,
+	Year: 1991
+}
+
+function info(platform, character){
+	console.log(`${this.title} was released in${this.year} for ${platform}, and the main character is ${character}`
+}
+—-----------------------
+
+If we were to call the function via:
+
+info.call(game, `SEGA`, `Sonic`) - these parameters will be displayed with the arguments given to them.
+
+Whereas, info.apply(game, `SEGA`, `Sonic`) the extra parameters will be logged as undefined even though we have arguments to use for them.
+
+
+The only way we can pass arguments to fill the roles of the parameters using the apply method is if we wrap the  extra arguments within an array like so:
+            info.apply(game, [`SEGA`, `Sonic`]). 
+
+
+
+
+
+Bind method:
+
+Final notes on call/apply methods - These are only good for one time uses. Because the original function will get ‘this’ context when coupled with call or apply for that specific time we call the function. Call and apply DO NOT permanently attach the function to an object. This becomes tedious when we have to invoke the function multiple times and have it maintain ‘this’ to a specific object.
+
+This is where bind comes into play.  bind method permanently attaches a function to an object. It works exactly like a call method, where we can add extra arguments without the need of [].
+
+How to use bind:
+
+Create a variable and then assign it the functionname.bind()
+Therefore, whenever we want invoke this function with the ‘this’ context always being present we just refer to the variable we stored it. 
+
+E.g 
+
+Let gameInfo = info.bind(game, `SEGA`, `Sonic`);
+
+gameInfo() - This invokes the function with the ‘this’ context attached
+
+
+
+
+
+
+
+
+
+
+
+Objects 
+
+Objects can be nested just like arrays.
+
+Let user = {
+	Name: `Jon`,
+	LastName: `Jones`,
+	Password: `abcdefg`,
+	Address: {
+		Street: `Smithlane`,
+		City: `London`
+		}
+
+	Balance: {	
+		Savings account: 25000
+		Main account: 67000
+}
+	
+} 
+
+the Objects nested inside a main object. However for readability reasons this isn't the best method. The best method is to break these nested objects into their own standalone objects.
+Then at the end you make a final object that just refers to these objects using variable
+
+
+
+
+
+Let userDetails = {
+Name: `Jon`,
+	LastName: `Jones`,
+	Password: `abcdefg`,
+}
+
+Let address = {
+		Street: `Smithlane`,
+		City: `London`
+}
+
+Balance: {	
+		Savings account: 25000
+		Main account: 67000
+}
+
+Now we make the main object that houses all these mini objects by referring to the variable names that store them.
+
+Let account = {
+	user: userDetails,
+	userAddress: address,
+	userBalance: balance 
+}.
+
+So if you want to view the balance you’d  use account.userbalance and this will show you the saving and main account balances
+https://docs.google.com/document/d/1x5FLH2SzI7qjtPj3a5JT3rzATQQkXGqb6Sq6uMj-YCQ/edit?usp=sharing
+Some good lessons here ^
+
+
+—--------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Explanation of [] on objects as opposed to. Notation 
+
+Example:
+
+
+
+getPasswordOptions(arr) {
+  let options = ['lowercase', 'uppercase', 'number', 'special'];
+
+
+  let passwordOptions = {
+    'lowercase': lowerCasedCharacters,
+    'uppercase': upperCasedCharacters,
+    'number': numericCharacters,
+    'special': specialCharacters
+  };
+
+
+  arr.forEach(function(value) {
+    userPasswordArray.push(getRandom(passwordOptions[value]));
+  });
+}
+
+In this example, the focus is on the forEach array method. This array loops over the array. The ‘value’ represents the items within the options array at the top. 
+userPasswordArray.push(getRandom(passwordOptions[value]))
+
+getRandom(arr) is a function that selects a random index from an array. In this example the we stored the array within an object called passwordOptions. And we selected the array using the [value] notation rather than the . notation. 
+
+Why?
+
+In JavaScript, when you want to access a property of an object using a variable as the key, you use the square bracket notation.
+So, passwordOptions[value] is equivalent to passwordOptions.lowercase if value is 'lowercase' during that loop cycle.
+If you were to use dot notation (passwordOptions.value), it would literally look for a property named "value" in the passwordOptions object, which is not what you want in this case
+Here were looking for the array (options) to match with the key’s in the object. If it does then it gets added to the userpasswordArray.
+
+
+
+
+Summary 
+
+When you want to access a property of an object and the property name is known beforehand, you can use dot notation. For example:
+
+
+let person = {
+  name: 'John',
+  age: 30
+};
+
+console.log(person.name); // Outputs: John
+In this example, person.name accesses the name property of the person object.
+
+However, there are cases where the property name is not known until runtime or is stored in a variable. In such situations, you need to use square bracket notation. Here's an example:
+
+
+let person = {
+  name: 'John',
+  age: 30
+};
+
+let propertyName = 'name';
+console.log(person[propertyName]); // Outputs: John
+In this example, propertyName is a variable, and using person[propertyName] allows you to access the property of the person object based on the value stored in propertyName.
+ 
+
+
+
+
+
+Object Methods:
+
+Object.keys(Your object name) - this creates an array of the object. This array contains the keys of the object 
+
+Object.values(Your object name) - this creates an array of the object. This array contains the values of the object 
+
+Object.entries(Your object name) - This gives you an array. This array will have nested arrays. These nested arrays will contain the key-value pair combos.
+
+
+
+
+Arrays are mainly used to hold the same type of data (numbers or strings or objects). You can have different types of content inside the array but common practice is to have the same data type inside an array.
+
+
+ES6 module:
+
+
+
+What is JS Destructuring?:
+
+
+Destructuring is a feature in JavaScript that allows you to extract values from arrays or properties from objects and assign them to variables in a more concise and convenient way. 
+
+Object Destructuring:
+
+With object destructuring, you can extract values from an object and assign them to variables with the same names as the object's properties:
+
+In the old way if you want to store the values of an array or object into a variable it’s long winded and makes code look unclean. For example:
+
+// Without destructuring
+const person = { name: 'John', age: 30 };
+const personName = person.name;
+const personAge = person.age;
+
+
+
+Whereas with object destructuring, you can extract values from an object and assign them to variables with the same names as the object's properties:
+
+// With destructuring
+const { name, age } = person;
+
+
+
+
+
+
+
+The syntax for object destructuring is:
+
+Let {name, age} = person.
+
+We use {} since we're dealing with an object (i.e. we’re converting object key-value pair into a variable)
+Within the {} we write down the keys of the object (YOU MUST USE THE KEY NAMES)
+
+At the end we just assign it the name of your object (i.e = object Name)
+
+This will automatically convert the key-value pairs into variables without affecting the original object.
+
+Therefore if we were to console.log(name) we would get `John`. Because we’ve technically taken the ‘person’ object and converted the key-value pair into a variable(i.e. ‘John` is stored in the ‘name’ variable.
+
+You can also rename variables during the destructuring process:
+
+Say I want to change ‘name’ into ‘fullname`. We can change the name of the variable within the {} like so.
+
+Let {name: fullname, age} = person.  — The important thing here is the colon( : ) before giving the new name.
+
+
+
+
+
+Destructuring nested objects:
+
+
+const person = {
+    name: 'John',
+    age: 30,
+    address: {
+      city: 'New York',
+      country: 'USA'
+    }
+  };
+ 
+  // Destructuring nested object
+  const { name, age, address: { city, country } } = person;
+ 
+  console.log(name);    // Output: John
+  console.log(age);     // Output: 30
+  console.log(city);    // Output: New York
+  console.log(country); // Output: USA
+
+
+
+
+As you can see, in the destructuring (consts {} = person). Within the {} the nested object is written exactly as how its written in the initial object minus the values in the key-value pairs. The ‘ address: {}` just shows that we are referring to nested object and not renaming of the variables.
+
+
+
+
+
+
+
+Array Destructuring:
+
+ 		// Without destructuring
+const numbers = [1, 2, 3];
+const firstNumber = numbers[0];
+const secondNumber = numbers[1];
+
+
+ 		// With destructuring
+const [first, second, third] = numbers;
+
+
+console.log(first);  // Output: 1
+console.log(second); // Output: 2
+console.log(third);   // Output: 3
+
+
+
+
+
+As you can see, to assign individual items of an array to their own variable is long winded. Hence using array destructuring makes it easier.
+
+How do you skip array items if you don’t want to assign them to a variable?
+
+You must leave an empty space for where that item will occupy. So for the above example if we wanted to skip ‘2’ we do the following:
+const [first, ,third] = numbers;
+
+Notice how we use ,  ,   - this is because if were to do first,third then JS will assume that we have named the 2nd array item as ‘third’ but thats not the case.
+
+
+
+
+Destructuring nested Arrays:
+
+const numbers = [1, 2, 3, [4,5]];
+
+Same thing with nested objects. We must write the destructured array in the way its been laid out in the initial array, like so:
+
+const [first, second , third , [a,b]] = numbers;
+
+
+Essentially its as if we’re rewriting the array but instead of writing the values, we’re writing the variable names we want to assign it to.
+
+
+
+
+
+
+
+Summary:
+
+Destructuring is a way for us to store individual values within objects and arrays into their own unique variables. And if need be we can use these variables anyway we want without affect the original array 
+
+Unlike objects which we must use their keys as the variable names (and so if we want to change them we have to use the renaming technique).
+With arrays we can assign our custom variable names from the start. Since there is no ‘key’ to go off from.
+
+The structure of your destructuring pattern should match the structure of the initial array/object. Whereby in the destructured format you must write them in the order they have been laid out in their original array/object. This is because if you don’t it will create problems as JS only knows the initial order and from there it will assign variables. If you were to change the order JS won’t recognise that and will read it wrong.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Spread Operator (...) :
+
+Spread operator spreads out the values within an object or iterable. Spread can be used in 3 ways:
+
+Arrays:
+
+	The spread operator allows us to incorporate an existing array into a new array without having to type the array out again. This is handy when we want to customize the items within the array without affect the original array. This is because, say we have an array with 10 items. And we want to add an item to that array whilst also adding extra values manually. If were to try that and do it without affecting the original array we’d have to repeat the original array several times and thats poor practice.
+
+Using the spread operator we can do it seamlessly. And the way we use the spread operator is as follows(syntax):
+
+…arrayname 
+
+E.g. 
+
+
+Let array = [1,2,3]
+
+Let newArray = [...array, 4,5,6,]
+
+Console.log(newArray) will show 1,2,3,4,5,6
+
+
+E.g. 2
+
+Let characters = [
+	{name: `sonic`, color: `blue`}
+	{name: `tails`, color: `yellow`}
+	{name: `shadow`, color: `black`}
+
+]
+
+Now say we want to add a new object to this array. If we use the push() array method this will permanently alter the original characters array. But we don’t want that. Instead we use the spread operator.
+
+Let characterToAdd = {name: `shadow`, color: `black`}
+Let updatedList = [...characters, characterToAdd]
+
+
+
+
+What if we have a nested array and we want to spread that?
+
+There are 2 ways to spread out a nested array.
+
+Example 1: You use the spread operator for the non nested items and utilize the slice() to distinguish between nested and non-nested. However, this method isn’t practical because what if we have something like [1,2, [3,4], 5,6,7, [8,9,10]]. I.e. we have alternating nested arrays or nested arrays within nested arrays. This makes the code very long and hard to read if we were to use this because we’d essentially be using several spreads and slices methods.
+
+let array = [1,2,3, [5,5,5]]
+
+
+let newArr = [...array.slice(0, 3), ...array[3]]
+
+
+console.log(newArr);
+
+
+
+
+
+^ But this method is useful if you just want to spread over certain nested arrays like so:
+
+Example 1.5: 
+
+let array = [1,2,3, [5,5,5], 10, 10,10, [`A`, `B`, `C`]]
+
+
+let newArr = [...array[7]]  
+
+
+This will display ABC as its spreading only the last nested array.
+
+
+
+
+
+
+
+
+
+Example 2: This is the preferred way - We use this array method called flat(). This is part of the ES10 update. And it makes life easier when I want to spread a nested array. 
+
+flat() does as the name suggests, it flattens the entire array therefore any nested array will become un-nested and will be just one big array of non-nested items.We can then use the spread operator to spread over the entire array
+
+let array = [1,2,3, [5,5,5]]
+
+
+
+
+let newArr = array.flat()
+
+
+console.log(newArr);  // OUTPUT [1, 2, 3, 5, 5, 5]
+
+
+let test = [...newArr, 10, 20, 30]
+
+
+console.log(test); // OUTPUT [1, 2, 3, 5, 5, 5, 10, 20, 30]
+
+
+
+^  Whats happening here is that we created a new variable and assigned it the flattened array (hence the console log shows one long un-nested array)
+We then created a new variable to be able to spread the flattened array and add additional items to the array
+Refer to Array methods chapter for more details on using flat().
+
+
+Objects:
+
+	Let game = {
+		Name: `sonic`,
+		Platform: `sega`
+		Year: 1991
+}	
+
+So the same as with arrays, if we want to add this object into an array or another object we simply use the spread operator like so: 
+
+E.g. 
+
+Let newGame {
+	…game,
+	Characters: `Sonic, tails, Amy, Knuckles`
+}
+
+
+If we console log this you will see that our new object (newGame) consists of an object but with an extra key-value pair showcasing the characters. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+What if we have a nested object and we want to spread that?
+
+You use the spread operator followed by the name of the main object [DOT NOTATION] followed by the name of the nested object.
+
+E.g. 
+
+let game = {
+
+
+    name: `sonic`,
+    platform: `SEGA`,
+    year: 1991,
+    characters: {
+        main: `Sonic`,
+        side: `tails`,
+        rival: `Shadow`
+    }
+  }
+
+
+  let newGame = {
+    ...game.characters,
+  }
+
+
+Functions:
+
+	
+To be able to use the spread operator with functions we must have function parameters. 
+Then when we call the function we just spread (...) the object or array we want to refer to, like so:
+
+ 	let array = [1,2,3]
+
+
+function nums(a, b,c) {
+    return console.log(a, b, c);
+  	}
+ 
+nums(...array) // OUTPUT 1 2 3
+
+
+
+However there is a slight issue here because since we’re spreading the array into individual items, they all occupy one of the 3 parameters we set out - So what if we only have 3 parameters but the array has 6 items? 
+The function when its called will only spread the first 3 items but leave out the rest.
+
+To solve this we use the rest parameter.
+
+
+rest parameter:
+
+A rest parameter is denoted by the use of the ellipsis (...) followed by a parameter name. It allows a function to accept an arbitrary number of arguments as an array.
+
+E.G.
+
+
+
+function example(firstParam, ...restParams) {
+    console.log(firstParam); // Prints the first argument
+    console.log(restParams); // Prints an array containing the rest of the     arguments
+  }
+ 
+  example(1, 2, 3, 4);
+
+^ In this example, firstParam will be 1, and restParams will be [2, 3, 4] because the rest parameter collects all the additional arguments into an array.
+
+
+E.G. 2
+
+ 	
+function nums(values, ...extraValues) {
+   	 return [values, ...extraValues];
+  	}
+ 
+  	const testArr = [1, 2, 3];
+  	const result = nums(...testArr, 10, 20, 30);
+  	console.log(result);
+
+
+
+In the function declaration function nums(values, ...extraValues), the ...extraValues is a rest parameter. It allows the function to accept an arbitrary number of arguments after the first parameter (values). The rest parameter collects these additional arguments into an array named extraValues.
+When you call the function like this: nums(...array, 10, 20, 30), the spread operator (...) is used to spread the elements of the array into individual arguments, and then 10, 20 and 30 are additional arguments. 
+The nums function receives values as [1] (the spread elements of the array). - because spread puts the array into individual items and since we only have one parameter (values) this will be occupied by the 1 inside the ‘testArr’
+The rest parameter ...extraValues collects the remaining arguments, which are 2, 3, 10, 20 and 30, into an array: [2, 3, 10, 20, 30]. 
+Note: 
+
+The rest parameter ...extraValues collects the `extra` arguments into an array. And since they are in an array we can execute array methods on them/
+
+
+function nums(a, b, c, ...extraValues) {
+    return [a, b, c, extraValues]
+  }
+
+
+  const testArr = [1, 2, 3];
+  const result = nums(...testArr, 10, 20, 30);
+  console.log(result); // OUTPUT [1, 2, 3, Array(3)]
+
+
+
+The output will be the spread out ‘testArr’ followed by the array created by the rest parameter. This is because the rest parameters bundles extra arguments and so if you want to spread the rest parameter you must use the spread operator when referring to it in your ‘return’ statement like so:
+
+function nums(a, b, c, ...extraValues) {
+    return [a, b, c, ...extraValues]
+  }
+
+
+  const array = [1, 2, 3];
+  const result = nums(...array, 10, 20, 30);
+  console.log(result); // OUTPUT [1, 2, 3, 10, 20, 30]
+
+Summary: 
+
+What you need to know is that rest parameter bundles the extra arguments into an array. And if you want to spread that array you simply use the spread operator followed by the name of the rest parameter (aka the rest array)
+Whenever you use spread operator you must spread the in {} or []. You cant spread an array or object into a string
+
+The thing about function is that we cant return items separated by comma. You can't return multiple primitive values separated by commas. If you do that then the function will only return the final value on that list and not the full list.The only way to return a list of items is to wrap it in an array or {}. This is called grouping. Grouping in vanilla JS can only be done using [] or {} but with react.js we can use ().
+
+
+
+
+
+
+
+
+
+
+
+
+Arrow Functions:
+
+These are an easier way of writing a function expression
+
+Benefits of using arrow functions are:
+
+ Lexical scope
+
+
+Lets compare a function expression to an arrow function so you can see the differences.
+
+
+Function Expression
+
+
+let sum = function(a,b){
+    return a + b
+}
+
+
+console.log(sum(5, 5)); // Output 10
+
+
+Arrow function
+
+
+let sum2 = (x, y) => {
+    return (x + y)
+}
+
+
+console.log(sum2(10, 10));
+
+
+
+
+The difference is that Arrow functions don’t need the ‘function’ keyword
+
+Essential arrow function syntax is 
+
+Let variableName = () => { } 
+
+Benefits of using arrow functions are:
+
+Parentheses syntax: 
+
+If you’re only using 1 parameter then we can also omit the () like so 
+Let name = firstName => { `Hello, ${firstName}}
+
+So when we come to call this function via name(`Jon Jones`) it will work just as good.
+
+But this shorthand is only for when we have 1 parameter. If we have no parameters or more than one than we must use the ().
+
+
+
+Body syntax:
+
+If you have a one line expression then we can omit the return key word and the {}. This is because arrow functions by default have a return feature programmed when only one line expressions are used.
+
+E.g. 
+
+Without arrow functions:
+
+Let game = () {
+	Return `Sonic`
+}
+
+With arrow functions:: 
+
+Let game = () => `Sonic`
+
+By console.log(game()) - this will display Sonic.
+
+
+NOTE: This is only for single line expressions. If you have 2 lines i.e. you created a variable within the function code block or you have a conditional statement then that means we no longer have a single line expression but a multi-line expression
+
+
+ Lexical scope:
+
+	‘this’ keyword when using arrow functions refers to the owner of the object (i.e. lexical scope). So if were to have an arrow function inside an object, the ‘this’ will refer to the global window because the global window is the owner of object. However when we use a regular function ‘this’ refers to the object thats calling the function.
+
+Arrow functions become useful for when we have an object that contains a function nested inside a function. The latter function will be the Arrow function and within this arrow function ‘this’ refers to the object because the owner of the 1st function is the main object hence ‘this’ will allow us to access the object key-value pairs.
+
+So a rule of thumb:
+If using 1 function in an object then use regular function but if using a function within a function. Make the latter function an arrow function so that ‘this’ keyword can be used within that function to refer to the object.
+
+
+Example 1: Trying to invoke a nested function and using ‘this’ keyword in the inner function:
+
+
+
+ let game = {
+ name: `Apex`,
+ main: `Wraith`,
+ characters:  `Octane, Bloodhound`,
+ openingLine(){
+   
+    return function(){ return` ${this.main} You are the JumpMaster}` }
+}
+}
+
+
+console.log(game.openingLine()());
+
+
+//output  undefined You are the JumpMaster}
+
+
+
+^ As you can see the ‘this’ doesn’t pick it up because the inner function is not being called by game object but rather being called by the openingLine function. So ‘this’ refers to the outer function and there are no ‘main’ properties in that function hence it returns undefined.
+
+Example 2: The use of Arrow function to over the issue:
+
+
+
+ 
+ let game = {
+ name: `Apex`,
+ main: `Wraith`,
+ characters:  `Octane, Bloodhound`,
+ openingLine(){
+   
+    return () => ` ${this.main} You are the JumpMaster`
+}
+}
+console.log(game.openingLine()());
+//Output - Wraith You are the JumpMaster
+
+
+
+^ Because of lexical scope, ‘this’ refers to the owner of the object that invoked the function. So since openingLine was the object that invoked this arrow function then the owner of that function was the game object which indeed contains the ‘main’ key hence we returned the intended result.
+
+
+
+Sidenote: 
+
+if you want to invoke a function within a function. You must invoke the first function as normal but then add an extra () at the end, like so:
+
+ 		
+game.openingLine()()
+
+
+
+
+The first set of () invokes the openingLine method, which returns the inner function. The second set of () then invokes that inner function.
+
+So whenever you have a function inside a function (regardless if the inner function has a name or not) to call the inner function we need to call the outer function and then add () to the end of it. - the code is basically saying call the 1st function and call the 2nd function.
+
+
+
+The important thing to note here is that if you want to call the function within the function. You must ensure that the main function RETURN key statement is the nested function like so: 
+showrelated (){
+            let x = 2;
+            console.log(x + x);
+           return  sum = (y) => console.log(`total cost is ${y}`);
+        }
+   
+
+If we don’t give that return keyword then we won’t be able to call the function using the ()() because without the return keyword The showrelated method is called, and then you're trying to immediately invoke the result of that method. However, your showrelated method doesn't return a result.
+
+
+
+
+
+
+
+
+
+
+
+Additional notes on lexical scope without arrow functions:
+
+If you have a parent function  and nested inside that parent is a child function:
+Parent function has access to the content inside its code block (i.e. variables/arrays/objects etc)
+The next function has access to all the content within the parent function because to the nested function the parent’s contents are viewed as global scope.
+However the parent function can’t access content within the child function.
+
+E.g.
+
+function one() {
+  let x = 5;
+  
+  function two() {
+    console.log(x + x);
+  }
+
+  // Call function two
+  two();
+}
+
+// Call function one
+one();
+
+If we were to call function one, it will call function two since thats in the code block and youll get 10 on console. Because function two has access to parent function’s variables.
+
+
+
+
+
+
+setTimeout() and setInterval():
+
+SetTimeout():
+
+Syntax:
+
+setTimeout(function(){}, milliseconds, arg1, arg2, etc)
+
+This method calls a function after a specified number of seconds.
+arg1, arg2 etc are the arguments that can be passed into the function if the function uses parameters
+
+And there are different ways you can write this setTimeout method
+
+1) 
+
+setTimeout( () => {
+    console.log(`hello`);
+}, 3000)
+
+^ This is an arrow function that's being executed after 3 seconds
+
+2)
+
+ setTimeout(greeting, 3000)
+
+
+ function greeting(){
+    console.log(`hello`);
+ }
+
+^ Here we’ve written the function outside the setTimeout(). Note that within the setTiemout () we are not invoking the function but rather just referencing it hence we don’t need to have the () after the function name. - similar to how we use callback functions.
+This is because When you pass a function as an argument to setTimeout, you're passing a reference to the function, not calling it immediately. The purpose of setTimeout is to execute the function after a specified delay (in milliseconds). If you included the parentheses () after greeting:
+It would call the greeting function immediately and pass its return value to setTimeout, defeating the purpose of scheduling a delayed execution.
+
+
+3) 
+
+setTimeout(greeting, 3000, `Sonic`)
+
+
+function greeting(param){
+    console.log(param);
+}
+
+^ heres an example of using function parameters and passing arguments to it.
+
+
+clearTimeout()
+
+This will prevent the setTimeout from occurring. To use this we must place the setTimeout in a variable and then inside the clearTimeout() we write down the name of the variable that we stored our setTimeout in.
+
+E.g. 
+
+Let timer = setTimeout(greeting, 3000)
+
+ function greeting(){
+    console.log(`hello`);
+ }
+
+clearTimeout(timer)
+
+The function will not be executed at all.
+—--------------------------
+
+
+setInterval():
+
+Syntax:
+
+setInterval(function(){}, milliseconds, param1, param2, etc)   - exactly the same as setTimeout()
+
+This method however, will invoke the function continuously until it's either cleared or the window is closed.
+This can also be written in the same 3 ways as setTimeout()
+
+A good use for this would be to have a counter. And within the function we increment or decrement (depending if you want the counter to go up or down) the counter. We can also stop the counter from executing indefinitely by incorporating the clearInterval within the function as well. 
+
+example:
+
+let counter = 0
+
+
+let interval = setInterval(count, 1000)
+
+
+function count(){
+    console.log(counter++);
+    if (counter === 5){
+        clearInterval(interval)
+    }
+}
+
+^ Like with settimeout and cleartimeout in order to use the clearinterval() we need to first assign the setInterval a variable so that we can reference it in the clearInterval() brackets.
+
+^ What this code is saying, is that for every 1 second we execute the function which will increase the counter by 1. But once the counter reaches 5 , the interval will stop.
+
+
+
+Higher Order Functions:
+
+
+Higher order functions are functions that have another function as a parameter or it returns another functions
+
+E.g. the array iterator methods ForEach, map, filter and reduce are all higher order functions as they use a function within their parameter.
+
+E.g. addEventListener() also uses a function in its parameter
+
+
+
+Factory functions:
+
+These are functions that return an object.
+The reason we use them is so that we don’t repeat our code when trying to create multiple of the same object but with small differences 
+To be able to use factory functions you must give it parameters that will be inserted into that object.
+
+Syntax:
+
+Const PersonFunction () {
+	Return {
+	// contents of the object
+}
+}
+Example 1:
+
+function personFactory(name) {
+    return {
+        talk(){
+            return `I am ${name}`
+        }
+
+
+    }
+}
+
+
+let me = personFactory(`Abdul`)
+
+
+console.log(me.talk()); // This will display ' I am Abdul`
+
+
+We can update the values in the key-value pairs of objects just be adding an argument to the function.
+
+
+Example 2:
+
+Const ElementFactory(element, text, color) {
+
+Let newEl = document.createElement(element),
+	newEl.textContent = text,
+	newEl.style.color = color	
+
+return {
+	newEl,
+	setText(newText) {
+	newEl.textContent = newText 
+}
+	setColor(newColor) {
+	newEl,style.color = newColor
+}
+
+}
+
+}
+
+Now we can create multiple elements, edit their text and style them all with one function, like so
+
+Let newDiv = ElementFactory(`div`, `Sonic`, `red`)
+Let title = ElementFactory(`h1`, `tails`, `blue`)
+
+We can then use the factory Function object to edit the color or text (or anything else we have in the object) for example
+
+title.newText(`Sonic is blue`)
+
+This will change the title text from ‘tails’ to ‘sonic is blue’. 
+
+
+
+Constructor(s) functions: 
+
+Very similar to factory functions but more simple.
+When making a constructor function you have to use a capital letter for its name e.g. function Book()
+When you come to instantiate you will use the ‘new’ keyword followed by the name of the function i.e. new Book()  – See how it's similar to new Date() new Number(0 etc hence why we need the capital letter.
+You must give parameters inside the () as this is where we will pass arguments to take up the values
+Inside the code you write down the key’s and values you want inside your object by using the format of this.keyName = value
+‘This’ will take reference from your specified object parameters you give it
+THIS WILL ALL MAKES SENSE WITH THE SYNTAX BELOW
+
+Syntax:
+
+Function Book(title, author, year) {
+	this.title = title,
+	this.author = author, 
+	this.year = year
+}
+
+So when we want to create an object we simply use the constructor and pass arguments as parameters. Like so:
+
+Const bookOne = new Book(`BookOne`, `Spongebob`, 2013)
+
+This.title will attach a title key to the object and give it the value of BookOne as that was the argument passed to the parameter 
+
+
+This way we can create multiple objects with the same keys but different values rather than copying the same line of code multiple times.
+
+	But what if we want some objects to have additional keys? This is where classes come into play…
+
+
+Classes:
+
+These are basically constructors nested inside a class object.
+Classes are an easy way to write constructors and prototypes without having to us extra lines of code
+
+Syntax:
+
+class Book {
+	constructor(parameters) {
+	this. =  ,
+	this. =  ,
+}
+}
+
+Then you instantiate (create) an object like so:
+
+Let myObject = new Book(pass your arguments here)
+
+So its literally the exact same as a constructor but the constructor is written inside the class {}.Classes and constructors are just blueprints for creating objects.and so we call the class/constructor to an object to give it the ‘default’ settings of that class/constructor.
+
+Classes can have methods (i.e. functions) that are directly accessed by the properties of the constructor object.
+Instead of adding them via the proptype way, in classes you add methods just by writing them as simple functions after you close your constructor object, like so:
+
+class Book {
+	constructor(parameters) {
+	this. =  ,
+	this. =  ,
+}
+
+	summary() {
+		Return `${this.param} etc…`
+}
+}
+
+Then whenever we want to access that method we simply do the objectName.summary and if you do console.log(objectName) the method will appear in the __proto__ dropdown list.
+
+example 
+
+
+
+
+class Book{
+    constructor(title, author, year){
+        this.title = title,
+        this.author = author,
+        this.year = year
+    }
+
+
+    summary(){
+        return console.log(`${this.title}, was released by ${this.author} in ${this.year}`)
+    }
+
+
+}
+
+
+let myBook = new Book(`Sonic the hedgehog`, `Khabib`, 2024) // New object with these values are created to fill the keys stated on the constructor
+
+
+myBook.summary() // This displays the function inside your newly created object
+
+
+console.log(myBook) // Displays the entire object without the method, which will be found in the prototype.
+
+
+
+
+
+
+
+    function constructor(raining, noise) {
+      this.raining = raining;
+      this.noise = noise;
+      this.makeNoise = function() {
+        this.raining ? console.log(this.noise) : null;
+      };
+    }
+ 
+ 
+  const cat = new Animal(true, "meow");
+  cat.makeNoise(); // Outputs: meow
+
+
+^ This is a constructor - This is how we would add a function as part of the object. Whereas in classes we add the function outside the constructor so the function becomes a method and not a hardcoded function. But in constructors the function is hard coded into all object children
+
+
+
+
+
+Classes and constructors have flexibility:
+
+What does this mean? This means that even though they’re designed to create multiple instances of the same objects, you can create objects that contain the same ‘settings’ as the class/constructor but you also have the ability to add new information to an object.
+Classes and constructors in JavaScript provide a blueprint for creating objects with shared structure, but they are flexible enough to handle variations among instances. You can create objects with different key-value pairs, even if they share the same class. 
+
+class Person {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+  }
+ 
+  const person1 = new Person("John", 30);
+  const person2 = new Person("Jane", 25);
+  const person3 = new Person("Bob", 40);
+ 
+  console.log(person1); // { name: 'John', age: 30 }
+  console.log(person2); // { name: 'Jane', age: 25 }
+  console.log(person3); // { name: 'Bob', age: 40,)
+
+
+
+what if we want to give person 3 a job property that is exclusive to that object on play. You do this by:
+
+person3.job = "Engineer";
+
+And that's that, person 3’s object has extra items not found in other objects.
+
+summary:
+In summary, classes and constructors are blueprints for creating multiple instances of the same object without having to repeat your lines of code.
+
+In my opinion going forward, use classes over factory Functions/constructors because it combines all of their features in one easy readable code. Classes also overcome the issue of inheritance of methods i.e. all objects being given the method created in the constructor or factory function. Because with classes, the only way to access its proptypes is if the object was created using the class as a blueprint. 
+
+
+
+
+** NEVER USE ARROW FUNCTIONS ON CONSTRUCTORS AND CLASSES**
+
+
+Subclasses:
+If you have a class you can create subclasses that will inherit the properties and methods from that parent class (i.e this covers inheritance and polymorphism aspect of OOP whereby we can inherit things from the parent class as well as override methods of the parent class to create our own methods - this is called polymorphism.
+
+We must ‘extend from class’ 
+We then continue as if we’re creating a normal class i.e. we add a constructor function and methods
+In the constructor object we add our own properties and call (inherit) the parent class properties using ‘super()’
+If the parent class has a method and IF you want that method in the subclass you must add the same name of the method. Here you can add new logic and/or use parent class method logic by calling the methods using super.methodName(). 
+If you don’t want to inherit the parent class method then just don’t make a reference to it at all in the subclass
+
+
+Full code example with explanation if you get stuck:
+ class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+
+  makeSound() {
+    console.log("Animals will be animals");
+  }
+}
+
+
+class Dog extends Animal {
+  constructor(name, breed) {
+    super(name); // Calls parent class properties so that we can use ‘this.name’ BUT WE PASS THE NAME parameter from the subclass so that i also passes into the name parameter of the parent class. 
+
+
+    this.breed = breed;
+  }
+
+
+  makeSound() {
+
+
+
+
+    console.log("Bark, bark!"); // Overrides the makeSound method from the Animal class. So the name of the method stays the same but the code block now is a new thing.
+ 
+    // You can still execute the code block inside the parent class you simply just have to call the super.makeSound() and that will execute the parent class function code block.
+ 
+    // super.makeSound() - This call and execute the code block of the parent class method
+  }
+
+
+  showDetails() {
+    console.log(`Name: ${this.name}, Breed: ${this.breed}`);
+  }
+}
+
+
+let myDog = new Dog("Buddy", "Golden Retriever");   // Note here we make an instance the subclass and not the parent class
+myDog.makeSound(); // Outputs: Animals will be animals followed by Bark, bark! if we make the super.makeSound() invocation otherwise it'll just print bark bark.
+myDog.showDetails();
