@@ -20,7 +20,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://studybuddy-ai.netlify.app/"],
+    origin: "https://studybuddy-ai.netlify.app/",
     credentials: true,
     methods: ["GET", "POST"],
   })
