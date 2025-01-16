@@ -18,7 +18,13 @@ import {
 dotenv.config();
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://studybuddy-ai.netlify.app/"],
+    credentials: true,
+    methods: ["GET", "POST"],
+  })
+);
 
 const openAIApiKey = process.env.OPENAI_API_KEY;
 const openai = new OpenAI({
